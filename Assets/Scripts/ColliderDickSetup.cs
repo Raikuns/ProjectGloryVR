@@ -13,6 +13,7 @@ public class ColliderDickSetup : MonoBehaviour
     {
         Invoke("FindColliders",3f);
     }
+
     public void FindColliders()
     {
         tails = FindObjectsOfType<TailAnimator2>();
