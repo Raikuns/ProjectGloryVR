@@ -8,12 +8,17 @@ using UnityEditor;
 public class HandPositionCalculator : MonoBehaviour
 {
     [SerializeField] Transform[] bones;
-    [SerializeField] OneGrabTranslateTransformer limiter;
+    [SerializeField] Transform grabbable;
     TailAnimator2 tail;
 
     public Transform closest1, closest2;
+    Transform lastClosest;
 
     public float lerpTime = 0.25f;
+
+    float lerpedY;
+
+    [HideInInspector] public Penis penis;
 
     private void Start()
     {
@@ -29,13 +34,60 @@ public class HandPositionCalculator : MonoBehaviour
     {
         GetClosest();
 
-        limiter.Constraints.MinX.Value = closest1.position.x;
-        limiter.Constraints.MaxX.Value = closest1.position.x;
+        float maxX = bones[0].transform.position.x;
+        float minX = bones[bones.Length - 1].transform.position.x;
 
-        SetYMax();
+        if (!penis.mirrored)
+        {
+            if (grabbable.transform.position.x > maxX)
+            {
+                SetPosition(maxX);
+            }
+            else if (grabbable.transform.position.x < minX)
+            {
+                SetPosition(minX);
+            }
+            else
+            {
+                SetPosition(grabbable.position.x);
+            }
+        }
+        else
+        {
+            if (grabbable.transform.position.x < maxX)
+            {
+                SetPosition(maxX);
+            }
+            else if (grabbable.transform.position.x > minX)
+            {
+                SetPosition(minX);
+            }
+            else
+            {
+                SetPosition(grabbable.position.x);
+            }
+        }
+    }
 
-        limiter.Constraints.MaxZ.Value = bones[0].transform.position.z;
-        limiter.Constraints.MinZ.Value = bones[bones.Length - 1].transform.position.z;
+    void SetPosition(float x)
+    {
+        grabbable.transform.position = new Vector3(x, lerpedY, closest1.position.z);
+    }
+
+    void SetY()
+    {
+        if (lastClosest == null)
+        {
+            lerpedY = grabbable.transform.position.y;
+            return;
+        }
+
+        LeanTween.value(gameObject, lastClosest.position.y, closest1.position.y, .3f).setOnUpdate(LerpY);
+    }
+
+    void LerpY(float y)
+    {
+        lerpedY = y;
     }
 
     void GetClosest()
@@ -46,7 +98,7 @@ public class HandPositionCalculator : MonoBehaviour
 
         for (int b = 0; b < bones.Length; b++)
         {
-            float dist = Vector3.Distance(limiter.transform.position, bones[b].position);
+            float dist = Vector3.Distance(grabbable.transform.position, bones[b].position);
             if (dist < closestDistanceSqr)
             {
                 if (b > 0)
@@ -69,33 +121,30 @@ public class HandPositionCalculator : MonoBehaviour
             }
         }
 
+        if (bestTarget != lastClosest)
+        {
+            SetY();
+        }
+
+        lastClosest = closest1;
         closest1 = bestTarget;
 
         Vector3 worldPosition = closest1.TransformPoint(closest1.localPosition);
 
         if (boneID != 0 && boneID != bones.Length - 1)
         {
-            if (limiter.transform.position.z > worldPosition.z)
+            if (grabbable.transform.position.z > worldPosition.z)
             {
                 if (boneID > 1)
                 {
                     closest2 = bones[boneID - 2];
                 }
             }
-            else if (limiter.transform.position.z < worldPosition.z)
+            else if (grabbable.transform.position.z < worldPosition.z)
             {
                 closest2 = bones[boneID];
             }
         }
-    }
-
-    void SetYMax()
-    {
-        //Vector3 desiredPos = FindNearestPointOnLine(closest1.position, closest2.position, limiter.transform.position);
-        float lerpedY = Mathf.Lerp(limiter.Constraints.MinY.Value, closest1.position.y, Time.deltaTime / lerpTime);
-
-        limiter.Constraints.MaxY.Value = lerpedY;
-        limiter.Constraints.MinY.Value = lerpedY;
     }
 
     public void OnGrab()
@@ -108,23 +157,12 @@ public class HandPositionCalculator : MonoBehaviour
         //tail.enabled = true;
     }
 
+
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        Handles.DrawBezier(limiter.transform.position, closest1.position, limiter.transform.position, closest1.position, Color.green, null, 3);
-        Handles.DrawBezier(limiter.transform.position, closest2.position, limiter.transform.position, closest2.position, Color.blue, null, 4);
+        Handles.DrawBezier(grabbable.transform.position, closest1.position, grabbable.transform.position, closest1.position, Color.green, null, 3);
+        Handles.DrawBezier(grabbable.transform.position, closest2.position, grabbable.transform.position, closest2.position, Color.blue, null, 4);
     }
-
-    public Vector3 FindNearestPointOnLine(Vector3 origin, Vector3 end, Vector3 hand)
-    {
-        //Get heading
-        Vector3 heading = (end - origin);
-        float magnitudeMax = heading.magnitude;
-        heading.Normalize();
-
-        //Do projection from the point but clamp it
-        Vector3 lhs = hand - origin;
-        float dotP = Vector3.Dot(lhs, heading);
-        dotP = Mathf.Clamp(dotP, 0f, magnitudeMax);
-        return origin + heading * dotP;
-    }
+#endif
 }

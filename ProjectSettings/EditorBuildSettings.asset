@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Test Toilet.unity
+    path: Assets/Scenes/Level1_BathroomStall.unity
     guid: e4ecdd70b42f26a4dbed677fbfa305f1
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: fd20e1e1faca13f4c8a3f2c4e511a8a5,
