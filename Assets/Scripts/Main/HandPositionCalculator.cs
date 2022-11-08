@@ -30,6 +30,11 @@ public class HandPositionCalculator : MonoBehaviour
         SetMinAndMaxPoints();
     }
 
+    private void LateUpdate()
+    {
+        LeanTween.move(closest2.gameObject, grabbable.position, 0.3f);
+    }
+
     void SetMinAndMaxPoints()
     {
         GetClosest();
@@ -71,7 +76,7 @@ public class HandPositionCalculator : MonoBehaviour
 
     void SetPosition(float x)
     {
-        grabbable.transform.position = new Vector3(x, lerpedY, closest1.position.z);
+        grabbable.transform.position = new Vector3(x, lerpedY, grabbable.transform.position.z);
     }
 
     void SetY()
