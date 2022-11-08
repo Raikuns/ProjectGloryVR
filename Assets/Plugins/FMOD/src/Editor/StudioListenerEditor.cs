@@ -1,5 +1,5 @@
 ﻿using UnityEditor;
-
+using UnityEditorInternal;
 namespace FMODUnity
 {
     [CustomEditor(typeof(StudioListener))]
@@ -21,6 +21,10 @@ namespace FMODUnity
             EditorGUILayout.IntSlider("Listener Index", index, 0, FMOD.CONSTANTS.MAX_LISTENERS - 1);
             EditorGUI.EndDisabledGroup();
 
+            EditorGUI.BeginChangeCheck();
+            var mask = serializedObject.FindProperty("occlusionMask");
+            int temp = EditorGUILayout.MaskField("Occlusion Mask", InternalEditorUtility.LayerMaskToConcatenatedLayersMask(mask.intValue), InternalEditorUtility.layers);
+            mask.intValue = InternalEditorUtility.ConcatenatedLayersMaskToLayerMask(temp);
             EditorGUILayout.PropertyField(attenuationObject);
             serializedObject.ApplyModifiedProperties();
         }
