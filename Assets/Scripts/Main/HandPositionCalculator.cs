@@ -33,8 +33,6 @@ public class HandPositionCalculator : MonoBehaviour
 
     void SetMinAndMaxPoints()
     {
-        
-
         float maxX = bones[0].transform.position.x;
         float minX = bones[bones.Length - 1].transform.position.x;
 
