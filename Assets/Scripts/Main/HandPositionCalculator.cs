@@ -4,6 +4,7 @@ using Oculus.Interaction;
 using UnityEngine;
 using FIMSpace.FTail;
 using UnityEditor;
+using System.Linq;
 
 public class HandPositionCalculator : MonoBehaviour
 {
@@ -27,12 +28,13 @@ public class HandPositionCalculator : MonoBehaviour
 
     private void Update()
     {
-        SetMinAndMaxPoints();
+        //SetMinAndMaxPoints();
+        GetClosest();
     }
 
     void SetMinAndMaxPoints()
     {
-        GetClosest();
+        
 
         float maxX = bones[0].transform.position.x;
         float minX = bones[bones.Length - 1].transform.position.x;
@@ -92,59 +94,35 @@ public class HandPositionCalculator : MonoBehaviour
 
     void GetClosest()
     {
-        Transform bestTarget = null;
-        int boneID = 0;
-        float closestDistanceSqr = Mathf.Infinity;
+        lastClosest = bones[0];
+        bones = bones.OrderBy((d) => (d.position - grabbable.position).sqrMagnitude).ToArray();
+        
 
-        for (int b = 0; b < bones.Length; b++)
-        {
-            float dist = Vector3.Distance(grabbable.transform.position, bones[b].position);
-            if (dist < closestDistanceSqr)
-            {
-                if (b > 0)
-                {
-                    if (b == bones.Length - 1)
-                    {
-                        bestTarget = bones[bones.Length - 1];
-                    }
-                    else
-                    {
-                        bestTarget = bones[b - 1];
-                    }
-                }
-                else
-                {
-                    bestTarget = bones[0];
-                }
-                closestDistanceSqr = dist;
-                boneID = b;
-            }
-        }
 
-        if (bestTarget != lastClosest)
+        if (bones[0] != lastClosest)
         {
             SetY();
         }
 
-        lastClosest = closest1;
-        closest1 = bestTarget;
+        //lastClosest = closest1;
+        //closest1 = bones[0];
 
-        Vector3 worldPosition = closest1.TransformPoint(closest1.localPosition);
+        //Vector3 worldPosition = closest1.TransformPoint(closest1.localPosition);
 
-        if (boneID != 0 && boneID != bones.Length - 1)
-        {
-            if (grabbable.transform.position.z > worldPosition.z)
-            {
-                if (boneID > 1)
-                {
-                    closest2 = bones[boneID - 2];
-                }
-            }
-            else if (grabbable.transform.position.z < worldPosition.z)
-            {
-                closest2 = bones[boneID];
-            }
-        }
+        //    if (bones[0] != 0 && boneID != bones.Length - 1)
+        //    {
+        //        if (grabbable.transform.position.z > worldPosition.z)
+        //        {
+        //            if (boneID > 1)
+        //            {
+        //                closest2 = bones[boneID - 2];
+        //            }
+        //        }
+        //        else if (grabbable.transform.position.z < worldPosition.z)
+        //        {
+        //            closest2 = bones[boneID];
+        //        }
+        //    }
     }
 
     public void OnGrab()
@@ -161,8 +139,8 @@ public class HandPositionCalculator : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        Handles.DrawBezier(grabbable.transform.position, closest1.position, grabbable.transform.position, closest1.position, Color.green, null, 3);
-        Handles.DrawBezier(grabbable.transform.position, closest2.position, grabbable.transform.position, closest2.position, Color.blue, null, 4);
+        Handles.DrawBezier(grabbable.transform.position, bones[0].position, grabbable.transform.position, bones[0].position, Color.green, null, 3);
+        Handles.DrawBezier(grabbable.transform.position, bones[1].position, grabbable.transform.position, bones[1].position, Color.blue, null, 4);
     }
 #endif
 }
