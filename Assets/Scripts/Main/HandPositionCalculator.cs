@@ -28,7 +28,6 @@ public class HandPositionCalculator : MonoBehaviour
 
     private void Update()
     {
-        //SetMinAndMaxPoints();
         GetClosest();
     }
 
@@ -103,26 +102,6 @@ public class HandPositionCalculator : MonoBehaviour
         {
             SetY();
         }
-
-        //lastClosest = closest1;
-        //closest1 = bones[0];
-
-        //Vector3 worldPosition = closest1.TransformPoint(closest1.localPosition);
-
-        //    if (bones[0] != 0 && boneID != bones.Length - 1)
-        //    {
-        //        if (grabbable.transform.position.z > worldPosition.z)
-        //        {
-        //            if (boneID > 1)
-        //            {
-        //                closest2 = bones[boneID - 2];
-        //            }
-        //        }
-        //        else if (grabbable.transform.position.z < worldPosition.z)
-        //        {
-        //            closest2 = bones[boneID];
-        //        }
-        //    }
     }
 
     public void OnGrab()
