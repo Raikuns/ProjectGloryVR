@@ -12,14 +12,20 @@ public class RopeGrabber : MonoBehaviour
     [SerializeField] LeanTweenType snapCurve;
     [SerializeField] float snapDuration = 0.5f;
     [SerializeField] bool grabbed = true;
-    [SerializeField] HandGrabInteractor grabber;
-    Grabbable Grabbable;
-    
+    [SerializeField] HandGrabInteractor[] grabbers;
+    [SerializeField] HandGrabInteractor heldByGrabber = null;
+
+    HandGrabInteractable[] grabbables;
 
     PointableUnityEventWrapper eventWrapper;
 
+    [HideInInspector]public Dildo dildo;
+
     private void Start()
     {
+        grabbables = GetComponentsInChildren<HandGrabInteractable>();
+        grabbers = FindObjectsOfType<HandGrabInteractor>();
+
         eventWrapper = GetComponent<PointableUnityEventWrapper>();
 
         eventWrapper.WhenSelect.AddListener(OnGrab);
@@ -34,10 +40,10 @@ public class RopeGrabber : MonoBehaviour
         {
             if (transform.localPosition.x >= maxPos.localPosition.x)
             {
-                grabber.Unselect();
+                heldByGrabber.Disable();
             }
         }
-        
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             OnRelease();
@@ -46,11 +52,24 @@ public class RopeGrabber : MonoBehaviour
 
     public void OnGrab()
     {
+        for (int y = 0; y < grabbables.Length; y++)
+        {
+            for (int i = 0; i < grabbers.Length; i++)
+            {
+                if (grabbers[i].SelectedInteractable == grabbables[y])
+                {
+                    heldByGrabber = grabbers[i];
+                }
+            }
+        }
+
         grabbed = true;
     }
 
     public void OnRelease()
     {
+        heldByGrabber.Enable();
+        heldByGrabber = null;
         LeanTween.move(gameObject, desiredPos, snapDuration).setEase(snapCurve);
         grabbed = false;
     }

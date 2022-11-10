@@ -8,6 +8,8 @@ using System.Linq;
 
 public class HandPositionCalculator : MonoBehaviour
 {
+    [SerializeField] Transform baseBone;
+    [SerializeField] Vector3 offset;
     [SerializeField] Transform[] bones;
     [SerializeField] Transform grabbable;
     TailAnimator2 tail;
@@ -33,7 +35,27 @@ public class HandPositionCalculator : MonoBehaviour
 
     private void LateUpdate()
     {
-        LeanTween.move(closest2.gameObject, grabbable.position, 0.3f);
+        //LeanTween.moveZ(bones[0].gameObject, grabbable.position.z, 0f);
+        //LeanTween.moveY(bones[0].gameObject, grabbable.position.y, 0f);
+
+        DickDirection();
+
+        //LeanTween.rotate(bones[0].gameObject, grabbable.eulerAngles, 0f);
+    }
+
+    void DickDirection()
+    {
+        Vector3 dir = (baseBone.position - grabbable.position).normalized;
+
+        print(dir);
+
+        baseBone.rotation = Quaternion.LookRotation(-dir);
+        Debug.DrawRay(baseBone.position, -dir, Color.green, 1);
+        Debug.DrawRay(baseBone.position, baseBone.eulerAngles, Color.red, 2);
+
+        Vector3 handDir = dir + offset;
+
+        grabbable.rotation = Quaternion.LookRotation(-handDir);
     }
 
     void SetMinAndMaxPoints()
@@ -98,8 +120,6 @@ public class HandPositionCalculator : MonoBehaviour
     {
         lastClosest = bones[0];
         bones = bones.OrderBy((d) => (d.position - grabbable.position).sqrMagnitude).ToArray();
-        
-
 
         if (bones[0] != lastClosest)
         {
