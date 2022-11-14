@@ -31,6 +31,8 @@ public class RopeGrabber : MonoBehaviour
         eventWrapper.WhenSelect.AddListener(OnGrab);
         eventWrapper.WhenUnselect.AddListener(OnRelease);
 
+        eventWrapper.WhenSelect.AddListener(dildo.PausePointsDecrease);
+
         transform.position = desiredPos.position;
     }
 
@@ -41,6 +43,7 @@ public class RopeGrabber : MonoBehaviour
             if (transform.localPosition.x >= maxPos.localPosition.x)
             {
                 heldByGrabber.Disable();
+                dildo.Pulled();
             }
         }
 

@@ -6,11 +6,18 @@ public class Dildo : MonoBehaviour
 {
     RopeGrabber dick;
 
+    public float availablePoints = 10;
+    float basePoints;
+    bool decreasePoints = false;
+
     public GameObject moveableDick;
+    [HideInInspector] public DildoHandler handler;
+
     Vector3 startPos;
 
     private void Awake()
     {
+        basePoints = availablePoints;
         dick = GetComponentInChildren<RopeGrabber>();
         dick.dildo = this;
 
@@ -22,19 +29,44 @@ public class Dildo : MonoBehaviour
         startPos = moveableDick.transform.position;
     }
 
+    private void Update()
+    {
+        if (decreasePoints)
+        {
+            availablePoints -= Time.deltaTime;
+            if(availablePoints < 1)
+            {
+                BackToOrigin();
+            }
+        }
+    }
+
     public void BackToOrigin()
     {
-        LeanTween.move(moveableDick, startPos, 0.2f);
+        LeanTween.move(moveableDick, startPos, 0.2f).setOnComplete(GetNewDildo);
+        decreasePoints = false; 
     }
 
-    public void IsChosenDildo()
+    void GetNewDildo()
     {
-        StartCoroutine(WaitAndGoBack());
+        availablePoints = basePoints;
+        handler.GetNewDildo(false);
     }
 
-    IEnumerator WaitAndGoBack()
+    public void IsChosenDildo(DildoHandler dildoHandler)
     {
-        yield return new WaitForSeconds(3f);
+        handler = dildoHandler;
+        decreasePoints = true;
+    }
+
+    public void PausePointsDecrease()
+    {
+        decreasePoints = false;
+    }
+
+    public void Pulled()
+    {
+        handler.OnDildoPulled(availablePoints);
         BackToOrigin();
     }
 }

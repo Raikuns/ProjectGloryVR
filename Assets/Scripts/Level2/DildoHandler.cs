@@ -20,26 +20,39 @@ public class DildoHandler : MonoBehaviour
         }
     }
 
-    private IEnumerator Start()
-    {
-        yield return new WaitForSeconds(3f);
-
-    }
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GetNewDildo();
+            GetNewDildo(false);
         }
     }
 
-    public void GetNewDildo()
+    public void GetNewDildo(bool isStart)
+    {
+        if (isStart)
+        {
+            ChooseAndMoveDildo();
+        }
+        else
+        {
+            StartCoroutine(GetNewDildoWithDelay(Random.Range(manager.maxDelay, manager.maxDelay)));
+        }
+    }
+
+    IEnumerator GetNewDildoWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        ChooseAndMoveDildo();
+    }
+
+    void ChooseAndMoveDildo()
     {
         Dildo newDildo = GetRandomDildo();
         LeanTween.move(newDildo.moveableDick, new Vector3(newDildo.moveableDick.transform.position.x, newDildo.moveableDick.transform.position.y, desiredPos.position.z), 0.2f);
 
-        newDildo.IsChosenDildo();
+        newDildo.IsChosenDildo(this);
 
         dildos.Remove(newDildo);
         dildos.Insert(0, newDildo);
@@ -52,5 +65,10 @@ public class DildoHandler : MonoBehaviour
         print(randomDildo);
 
         return dildos[randomDildo];
+    }
+
+    public void OnDildoPulled(float points)
+    {
+        manager.AddToPoints(points);
     }
 }
