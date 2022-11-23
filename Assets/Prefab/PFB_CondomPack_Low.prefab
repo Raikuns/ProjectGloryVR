@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2936792393048012442}
   - component: {fileID: 1091386609647141456}
   m_Layer: 0
-  m_Name: CondomPack_Low
+  m_Name: PFB_CondomPack_Low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
