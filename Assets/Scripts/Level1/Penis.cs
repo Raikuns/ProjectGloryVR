@@ -30,8 +30,8 @@ public class Penis : MonoBehaviour
 
     public void TurnOn()
     {
-        LeanTween.value(gameObject, 0, 0.1f, 1).setOnUpdate(UpdateWaveSpeed);
-        LeanTween.value(0, 0.4f, 1).setOnUpdate(UpdateWaveRange);
+        //LeanTween.value(gameObject, 0, 0.1f, 1).setOnUpdate(UpdateWaveSpeed);
+        //LeanTween.value(0, 0.4f, 1).setOnUpdate(UpdateWaveRange);
 
         speedTracker.gameObject.SetActive(true);
     }

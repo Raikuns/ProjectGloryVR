@@ -1304,7 +1304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 972734618}
   m_Layer: 0
-  m_Name: Box
+  m_Name: SpawnBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1575,27 +1575,27 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7d45cf8241a1f064f8d2c012e35e7312,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071079
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7d45cf8241a1f064f8d2c012e35e7312,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7d45cf8241a1f064f8d2c012e35e7312,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.70710576
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7d45cf8241a1f064f8d2c012e35e7312,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7d45cf8241a1f064f8d2c012e35e7312,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7d45cf8241a1f064f8d2c012e35e7312,
         type: 3}
