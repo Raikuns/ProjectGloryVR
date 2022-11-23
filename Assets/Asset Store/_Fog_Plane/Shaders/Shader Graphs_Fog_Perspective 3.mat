@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_Fog_Perspective 1
+  m_Name: Shader Graphs_Fog_Perspective 3
   m_Shader: {fileID: -6465566751694194690, guid: 533e6b0d0656d48439c9cfabbe8a0ae2,
     type: 3}
   m_ValidKeywords: []
@@ -38,9 +38,9 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _FogColor: {r: 0.78823537, g: 0.86274517, b: 0.9960785, a: 1}
+    - _FogColor: {r: 0.7307761, g: 0.84176356, b: 0.9622641, a: 0.45490196}
   m_BuildTextureStacks: []
---- !u!114 &6218294162737404797
+--- !u!114 &205344152547923131
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
