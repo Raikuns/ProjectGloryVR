@@ -12,6 +12,7 @@ public class HandPositionCalculator : MonoBehaviour
     [SerializeField] Vector3 offset;
     [SerializeField] Transform[] bones;
     [SerializeField] Transform grabbable;
+    [SerializeField] Transform rotator;
     TailAnimator2 tail;
 
     public Transform closest1, closest2;
@@ -35,12 +36,18 @@ public class HandPositionCalculator : MonoBehaviour
 
     private void LateUpdate()
     {
-        //LeanTween.moveZ(bones[0].gameObject, grabbable.position.z, 0f);
-        //LeanTween.moveY(bones[0].gameObject, grabbable.position.y, 0f);
-
         DickDirection();
 
-        //LeanTween.rotate(bones[0].gameObject, grabbable.eulerAngles, 0f);
+        var localPos = grabbable.localPosition;
+
+        if (localPos.z > 0.13f)
+        {
+            grabbable.localPosition = new Vector3(localPos.x, localPos.y, 0.13f);
+        }
+        else if (localPos.z < -0.0013f)
+        {
+            grabbable.localPosition = new Vector3(localPos.x, localPos.y, -0.0013f);
+        }
     }
 
     void DickDirection()
@@ -55,7 +62,7 @@ public class HandPositionCalculator : MonoBehaviour
 
         Vector3 handDir = dir + offset;
 
-        grabbable.rotation = Quaternion.LookRotation(-handDir);
+        grabbable.rotation = Quaternion.LookRotation(handDir);
     }
 
     void SetMinAndMaxPoints()
