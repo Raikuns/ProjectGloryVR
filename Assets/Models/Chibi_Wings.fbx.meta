@@ -21,7 +21,8 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 1
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'LeftLowerLeg' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -29,7 +30,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -52,7 +53,7 @@ ModelImporter:
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
@@ -85,7 +86,52 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: Chibi_Wings(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Wings.001
+      parentName: Chibi_Wings(Clone)
+      position: {x: -0.0438892, y: 0.77080625, z: -0.07823892}
+      rotation: {x: -0.14532018, y: 0.21470003, z: 0.032322902, w: 0.9652675}
+      scale: {x: 1.2470545, y: 1.2470546, z: 1.2470545}
+    - name: Wings
+      parentName: Chibi_Wings(Clone)
+      position: {x: -0.04258691, y: 0.74503666, z: -0.07958771}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 5.6853213, y: 5.6853213, z: 5.6853213}
+    - name: WB001.L
+      parentName: Wings
+      position: {x: -0.00030772807, y: 0, z: 0.0015615283}
+      rotation: {x: 0.53268665, y: -0.02269297, z: 0.11009502, w: 0.83881414}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: WB002.L
+      parentName: WB001.L
+      position: {x: -5.5879353e-11, y: 0.0076905987, z: 2.2351741e-10}
+      rotation: {x: -0.90299696, y: 0.03852634, z: 0.27600348, w: 0.32700825}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+    - name: WB002.L_end
+      parentName: WB002.L
+      position: {x: -0, y: 0.0113456715, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: WB001.R
+      parentName: Wings
+      position: {x: 0.015160141, y: 0, z: 0.0015615283}
+      rotation: {x: -0.5659885, y: 0.31674486, z: -0.3530702, w: 0.6742931}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: WB002.R
+      parentName: WB001.R
+      position: {x: -3.7252902e-11, y: 0.0076905987, z: 2.2351741e-10}
+      rotation: {x: -0.38547298, y: -0.05952973, z: -0.100326665, w: 0.9153149}
+      scale: {x: 0.9999999, y: 1, z: 0.9999999}
+    - name: WB002.R_end
+      parentName: WB002.R
+      position: {x: -0, y: 0.01134567, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -96,7 +142,7 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
