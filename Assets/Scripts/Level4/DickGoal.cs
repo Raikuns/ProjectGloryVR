@@ -8,6 +8,11 @@ public class DickGoal : MonoBehaviour
     public float spawnMoveTime;
     public LeanTweenType moveType;
 
+    private void Update()
+    {
+        transform.LookAt(Vector3.zero);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<ThrowingDick>() != null)
