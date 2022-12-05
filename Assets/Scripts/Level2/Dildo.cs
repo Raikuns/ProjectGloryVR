@@ -1,16 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Dildo : MonoBehaviour
 {
     RopeGrabber dick;
 
+    [SerializeField] public GameObject moveableDick;
+
     public float availablePoints = 10;
     float basePoints;
     bool decreasePoints = false;
 
-    public GameObject moveableDick;
     [HideInInspector] public DildoHandler handler;
 
     [SerializeField] Transform penisLook;
@@ -31,6 +30,7 @@ public class Dildo : MonoBehaviour
     private void Start()
     {
         startPos = moveableDick.transform.position;
+        moveableDick.SetActive(false);
     }
 
     private void Update()
@@ -49,17 +49,9 @@ public class Dildo : MonoBehaviour
 
     void MoveDickAccordingly()
     {
-        Vector3 diff = dick.transform.position - grabbedPos;
-        print(diff);
+        Vector3 desiredPos = new(penisLook.position.x, penisLook.position.y, dick.transform.position.z + 0.18f);
 
-        if (diff.x < 0)
-        {
-            penisLook.position = new Vector3(penisLook.position.x - diff.x, penisLook.position.y, penisLook.position.z);
-        }
-        else if (diff.y > 0)
-        {
-            penisLook.position = new Vector3(penisLook.position.x + diff.x, penisLook.position.y, penisLook.position.z);
-        }
+        penisLook.position = desiredPos;
     }
 
     public void BackToOrigin()
@@ -70,8 +62,14 @@ public class Dildo : MonoBehaviour
 
     void GetNewDildo()
     {
+        LeanTween.delayedCall(1f, DisableDildo);
         availablePoints = basePoints;
         handler.GetNewDildo(false);
+    }
+
+    void DisableDildo()
+    {
+        moveableDick.SetActive(false);
     }
 
     public void IsChosenDildo(DildoHandler dildoHandler)

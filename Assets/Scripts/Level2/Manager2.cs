@@ -19,7 +19,9 @@ public class Manager2 : MonoBehaviour
     private void Awake()
     {
         dildoHandler = FindObjectOfType<DildoHandler>();
-        pointsSlider.maxValue = pointGoal;
+
+        if (pointsSlider != null)
+            pointsSlider.maxValue = pointGoal;
     }
 
     private IEnumerator Start()

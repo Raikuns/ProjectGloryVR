@@ -50,6 +50,7 @@ public class DildoHandler : MonoBehaviour
     void ChooseAndMoveDildo()
     {
         Dildo newDildo = GetRandomDildo();
+        newDildo.moveableDick.SetActive(true);
         LeanTween.move(newDildo.moveableDick, new Vector3(newDildo.moveableDick.transform.position.x, newDildo.moveableDick.transform.position.y, desiredPos.position.z), 0.2f);
 
         newDildo.IsChosenDildo(this);
