@@ -7,7 +7,7 @@ public class TextExplosion : MonoBehaviour
     public float radius = 150.0F;
     public float power = 3000.0F;
 
-    void SimpleExplosion()
+    public void SimpleExplosion()
     {
         Vector3 explosionPos = transform.position;
         Collider[] colliders = Physics.OverlapSphere(explosionPos, radius);
