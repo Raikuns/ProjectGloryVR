@@ -8,6 +8,7 @@ public class LevelData : ScriptableObject
 {
     public string Name;
     public Level level;
+    public bool unlocked = false;
 }
 
 public enum Level

@@ -40,14 +40,14 @@ public class HandPositionCalculator : MonoBehaviour
 
         var localPos = grabbable.localPosition;
 
-        if (localPos.z > 0.13f)
-        {
-            grabbable.localPosition = new Vector3(localPos.x, localPos.y, 0.13f);
-        }
-        else if (localPos.z < -0.0013f)
-        {
-            grabbable.localPosition = new Vector3(localPos.x, localPos.y, -0.0013f);
-        }
+        //if (localPos.z > 0.13f)
+        //{
+        //    grabbable.localPosition = new Vector3(localPos.x, localPos.y, 0.13f);
+        //}
+        //else if (localPos.z < -0.0013f)
+        //{
+        //    grabbable.localPosition = new Vector3(localPos.x, localPos.y, -0.0013f);
+        //}
     }
 
     void DickDirection()

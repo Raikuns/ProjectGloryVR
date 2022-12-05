@@ -103,7 +103,7 @@ namespace Oculus.Interaction
             }
         }
 
-        protected virtual void UpdateVisual()
+        public virtual void UpdateVisual()
         {
             switch (InteractableView.State)
             {

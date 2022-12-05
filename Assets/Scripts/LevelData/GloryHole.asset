@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Level1_BathroomStall_ArtDemo
   level: 0
+  unlocked: 1

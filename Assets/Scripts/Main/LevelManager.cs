@@ -12,6 +12,11 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
+        if(FindObjectOfType<LevelManager>() != this)
+        {
+            Destroy(gameObject);
+        }
+
         instance = this;
     }
 
@@ -32,5 +37,10 @@ public class LevelManager : MonoBehaviour
             return;
 
         SceneManager.LoadScene(selectedLevel.Name);
+    }
+
+    public void BackToMain()
+    {
+        SceneManager.LoadScene(0);
     }
 }

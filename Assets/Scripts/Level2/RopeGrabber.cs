@@ -55,6 +55,8 @@ public class RopeGrabber : MonoBehaviour
 
     public void OnGrab()
     {
+        dildo.grabbedPos = transform.position;
+
         for (int y = 0; y < grabbables.Length; y++)
         {
             for (int i = 0; i < grabbers.Length; i++)

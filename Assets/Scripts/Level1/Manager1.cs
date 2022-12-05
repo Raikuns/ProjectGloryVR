@@ -24,9 +24,13 @@ public class Manager1 : MonoBehaviour
     [HideInInspector] public PlessureMeter plesMeter;
     [HideInInspector] public HandPositionCalculator handPosCalc;
 
+    LevelManager levelManager;
+
     private void Awake()
     {
         instance = this;
+
+        levelManager = LevelManager.instance;
 
         colDetection = GetComponentInChildren<CollisionDetection>();
         plesMeter = GetComponentInChildren<PlessureMeter>();
@@ -58,6 +62,7 @@ public class Manager1 : MonoBehaviour
         else if (dick == 2)
         {
             //LEVEL COMPLETED
+            levelManager.BackToMain(); 
         }
     }
 
