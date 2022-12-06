@@ -1,33 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CreditsManager : MonoBehaviour
 {
-    [SerializeField] GameObject[] creditsList;
-    [SerializeField] Vector3 startPos;
-    [SerializeField] TextExplosion explos;
-
-
-    [SerializeField] Vector3 vec3;
-    [SerializeField] float _Time;
-    [SerializeField] int _index = 0;
-
+    [SerializeField]List<CreditsObject> creditObjects;
+    int currIdx = 0;
     void Start()
     {
-        explos = FindObjectOfType<TextExplosion>();
-        SpawnText();
+        StartCoroutine(DoIt());
     }
 
-    void SpawnText()
+    IEnumerator DoIt()
     {
-        creditsList[_index].transform.position = startPos;
-        LeanTween.scale(creditsList[_index], vec3, _Time).setOnComplete(SpawnText).setDelay(2f);
-        _index++;
-    }
+        while (currIdx <= creditObjects.Count)
+        {
+            var currCreditObj = creditObjects[currIdx];
+            currCreditObj.Spawn();
+            if (currIdx + 1 <= creditObjects.Count)
+                yield return new WaitWhile(() => currCreditObj.hasFinished == false);
+            else
+                break;
+            currIdx++;
 
-    void Explosion()
-    {
-        explos.SimpleExplosion();
+        }
     }
 }
