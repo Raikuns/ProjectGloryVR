@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Catapult : MonoBehaviour
 {
+    [SerializeField] Rigidbody projectile;
+
     [SerializeField] Transform bucket;
     [SerializeField] Transform head;
     [SerializeField] Transform centerPoint;
+
+    [SerializeField] float flingTime = 0.5f;
+    [SerializeField] LeanTweenType flingType;
 
     Vector3 shootDirection;
 
@@ -28,6 +33,23 @@ public class Catapult : MonoBehaviour
         headRotation.y = 0;
 
         head.rotation = Quaternion.LookRotation(headRotation);
+    }
+
+    public void Release()
+    {
+        LeanTween.move(bucket.gameObject, centerPoint.position, flingTime).setEase(flingType).setOnComplete(Shoot);
+    }
+
+    void Shoot()
+    {
+        projectile.transform.SetParent(null);
+        projectile.isKinematic = false;
+        projectile.AddForce(shootDirection.normalized * 1000);
+    }
+
+    public void SetDickParent(Transform dick)
+    {
+        dick.SetParent(bucket);
     }
 
     private void OnDrawGizmos()

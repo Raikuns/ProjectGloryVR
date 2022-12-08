@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class Manager4 : MonoBehaviour
@@ -15,6 +16,8 @@ public class Manager4 : MonoBehaviour
     public GameObject newGoal;
 
     ThrowingDick throwingDick;
+
+    public Catapult catapult;
 
     private void Start()
     {
@@ -48,6 +51,10 @@ public class Manager4 : MonoBehaviour
     public void GetPoints(int incomingPoints)
     {
         points += incomingPoints;
+        if(points >= 100)
+        {
+            LevelManager.instance.LoadCredits();
+        }
     }
 
     public Transform GetRandomGoalPosition()

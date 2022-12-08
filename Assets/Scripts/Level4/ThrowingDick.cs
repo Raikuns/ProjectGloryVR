@@ -11,6 +11,8 @@ public class ThrowingDick : MonoBehaviour
 
     bool addForce = false;
 
+
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -28,6 +30,8 @@ public class ThrowingDick : MonoBehaviour
         transform.position = startPos;
         transform.rotation = Quaternion.identity;
         rb.isKinematic = true;
+
+        manager.catapult.SetDickParent(transform);
     }
 
     public void OnGrab()

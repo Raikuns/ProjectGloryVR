@@ -431,7 +431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 0
-  desiredPoints: 500
+  desiredPoints: 100
   boxPos: {fileID: 179291195}
   dick: {fileID: 4929465319094122656, guid: b63317da6d095a54399f60885e818557, type: 3}
   spawnDelay: 2

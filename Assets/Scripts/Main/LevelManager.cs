@@ -44,6 +44,11 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void LoadCredits()
+    {
+        SceneManager.LoadScene("CreditsScene");
+    }
+
     public void LevelCompleted(Level nextLevel)
     {
         UnlockLevel(nextLevel);

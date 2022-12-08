@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ec4096cab40d246bb804772d42ae6e, type: 3}
   m_Name: 4. DickHeaven
   m_EditorClassIdentifier: 
-  Name: Level4_DickHeaven_Art
+  Name: Level4_DickHeaven_Dev
   level: 3
   unlocked: 0

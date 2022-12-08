@@ -11,6 +11,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level1_BathroomStall_ArtDemo.unity
     guid: 11f5be4243f07ef49819bac95e8c5443
+  - enabled: 1
+    path: Assets/Scenes/Level2_WhackADick_Dev.unity
+    guid: fad8ea091c56f794e95d9f9777ac6132
+  - enabled: 1
+    path: Assets/Scenes/Level3_DixiACock.unity
+    guid: 664ed339a595f8849af0a0697bffb9be
+  - enabled: 1
+    path: Assets/Scenes/Level4_DickHeaven_Dev.unity
+    guid: a20a783cc5d7e7947abcc266296befb4
+  - enabled: 1
+    path: Assets/Scenes/CreditsScene.unity
+    guid: 312288512c3a8b4449fd04a99a560699
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: fd20e1e1faca13f4c8a3f2c4e511a8a5,
       type: 2}

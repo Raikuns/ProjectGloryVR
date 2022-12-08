@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c756620e4b10f47498ff6deb5ca35826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityMultiplier: -1
+  gravityMultiplier: 7.5
   manager: {fileID: 0}
   fadeinTime: 1
   mesh: {fileID: 7730120485833106316}
