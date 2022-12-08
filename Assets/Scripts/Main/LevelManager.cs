@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        if(FindObjectOfType<LevelManager>() != this)
+        if (FindObjectOfType<LevelManager>() != this)
         {
             Destroy(gameObject);
         }
@@ -42,5 +42,27 @@ public class LevelManager : MonoBehaviour
     public void BackToMain()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void LevelCompleted(Level nextLevel)
+    {
+        UnlockLevel(nextLevel);
+        BackToMain();
+    }
+
+    public void UnlockLevel(Level level)
+    {
+        if (level == Level.WhacADick)
+        {
+            levels[1].unlocked = true;
+        }
+        else if (level == Level.Dixie)
+        {
+            levels[2].unlocked = true;
+        }
+        else if (level == Level.Heaven)
+        {
+            levels[3].unlocked = true;
+        }
     }
 }

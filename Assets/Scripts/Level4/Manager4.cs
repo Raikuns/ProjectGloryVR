@@ -12,6 +12,8 @@ public class Manager4 : MonoBehaviour
     [SerializeField] GameObject dickGoal;
     public float goalMoveDelay = 3;
 
+    public GameObject newGoal;
+
     ThrowingDick throwingDick;
 
     private void Start()
@@ -62,7 +64,7 @@ public class Manager4 : MonoBehaviour
     void SpawnGoal()
     {
         Transform spawnPos = GetRandomGoalPosition();
-        GameObject newGoal = Instantiate(dickGoal);
+        newGoal = Instantiate(dickGoal);
 
         newGoal.GetComponent<DickGoal>().OnSpawn(spawnPos.position, this);
     }

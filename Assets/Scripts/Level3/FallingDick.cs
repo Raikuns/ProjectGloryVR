@@ -13,7 +13,7 @@ public class FallingDick : MonoBehaviour
     [HideInInspector] public Manager3 manager;
     public float fadeinTime = 1f;
 
-    [SerializeField] MeshRenderer mesh;
+    [SerializeField] SkinnedMeshRenderer mesh;
 
     private void Start()
     {

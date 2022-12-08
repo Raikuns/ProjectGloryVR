@@ -46,6 +46,12 @@ public class Manager2 : MonoBehaviour
         currentPoints += newPoints;
 
         points = Mathf.FloorToInt(currentPoints);
+
+        if(currentPoints >= pointGoal)
+        {
+            //Reached point goal
+            LevelManager.instance.LevelCompleted(Level.Dixie);
+        }
     }
 
     void UpdateSlider(float value)
