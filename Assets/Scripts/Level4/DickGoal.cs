@@ -7,6 +7,9 @@ public class DickGoal : MonoBehaviour
     [HideInInspector] public Manager4 manager;
     public float spawnMoveTime;
     public LeanTweenType moveType;
+    [SerializeField] Transform dickPos;
+
+    GameObject throwingDick;
 
     private void Update()
     {
@@ -18,9 +21,12 @@ public class DickGoal : MonoBehaviour
         if (other.GetComponent<ThrowingDick>() != null)
         {
             //Get points and give visual effects of landing a good throw
-            manager.GoalHit();
 
-            Destroy(gameObject);
+            throwingDick = other.GetComponent<ThrowingDick>().gameObject;
+
+            LeanTween.cancel(gameObject);
+
+            LeanTween.move(throwingDick, dickPos.position, 0.5f).setEase(moveType).setOnComplete(MoveDown);
         }
     }
 
@@ -31,6 +37,20 @@ public class DickGoal : MonoBehaviour
         transform.position = new Vector3(spawnPos.x, -7, spawnPos.z);
 
         LeanTween.move(gameObject, spawnPos, spawnMoveTime).setEase(moveType).setOnComplete(Move);
+    }
+
+    void MoveDown()
+    {
+        throwingDick.transform.localScale = Vector3.zero;
+        throwingDick.SetActive(false);
+        LeanTween.moveY(gameObject, -7, spawnMoveTime).setEase(moveType).setOnComplete(DeleteToilet);
+    }
+
+    void DeleteToilet()
+    {
+        manager.GoalHit();
+
+        Destroy(gameObject);
     }
 
     void Move()

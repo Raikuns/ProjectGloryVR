@@ -1576,6 +1576,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 701907921}
+  resetScaleTime: 0.5
+  scaleType: 27
 --- !u!135 &387684842
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5580,7 +5582,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1262956691}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -7865,6 +7867,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 387684835}
     m_Modifications:
+    - target: {fileID: 919132148649264296, guid: c5f462666bf37aa43b654a3be3be9717,
+        type: 3}
+      propertyPath: _Editor_Category
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132148649264296, guid: c5f462666bf37aa43b654a3be3be9717,
+        type: 3}
+      propertyPath: _Editor_FeaturesCategory
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1544613481708834810, guid: c5f462666bf37aa43b654a3be3be9717,
         type: 3}
       propertyPath: m_Name
