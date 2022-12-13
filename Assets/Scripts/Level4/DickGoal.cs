@@ -1,3 +1,4 @@
+using CartoonFX;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,17 @@ public class DickGoal : MonoBehaviour
     public LeanTweenType moveType;
     [SerializeField] Transform dickPos;
 
+    ParticleSystem particles;
+
     GameObject throwingDick;
+
+    Collider col;
+
+    private void Start()
+    {
+        col = GetComponent<Collider>();
+        particles = GetComponentInChildren<ParticleSystem>();
+    }
 
     private void Update()
     {
@@ -27,6 +38,8 @@ public class DickGoal : MonoBehaviour
             LeanTween.cancel(gameObject);
 
             LeanTween.move(throwingDick, dickPos.position, 0.5f).setEase(moveType).setOnComplete(MoveDown);
+
+            col.enabled = false;
         }
     }
 
@@ -41,6 +54,8 @@ public class DickGoal : MonoBehaviour
 
     void MoveDown()
     {
+        particles.Play();
+
         throwingDick.transform.localScale = Vector3.zero;
         throwingDick.SetActive(false);
         LeanTween.moveY(gameObject, -7, spawnMoveTime).setEase(moveType).setOnComplete(DeleteToilet);
