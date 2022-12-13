@@ -62,7 +62,7 @@ public class Manager1 : MonoBehaviour
         else if (dick == 2)
         {
             //LEVEL COMPLETED
-            levelManager.BackToMain(); 
+            levelManager.LevelCompleted(Level.WhacADick); 
         }
     }
 

@@ -13,12 +13,12 @@ public class FallingDick : MonoBehaviour
     [HideInInspector] public Manager3 manager;
     public float fadeinTime = 1f;
 
-    [SerializeField] MeshRenderer mesh;
+    [SerializeField] SkinnedMeshRenderer mesh;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        col = GetComponent<Collider>(); 
+        col = GetComponent<Collider>();
 
         LeanTween.value(0, 1, fadeinTime).setOnUpdate(UpdateAlpha);
     }
@@ -30,6 +30,9 @@ public class FallingDick : MonoBehaviour
 
     void UpdateAlpha(float value)
     {
+        if (mesh == null)
+            return;
+
         mesh.material.color = new Color(1, 1, 1, value);
     }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class Manager4 : MonoBehaviour
@@ -12,7 +13,11 @@ public class Manager4 : MonoBehaviour
     [SerializeField] GameObject dickGoal;
     public float goalMoveDelay = 3;
 
+    public GameObject newGoal;
+
     ThrowingDick throwingDick;
+
+    public Catapult catapult;
 
     private void Start()
     {
@@ -46,6 +51,10 @@ public class Manager4 : MonoBehaviour
     public void GetPoints(int incomingPoints)
     {
         points += incomingPoints;
+        if(points >= 100)
+        {
+            LevelManager.instance.LoadCredits();
+        }
     }
 
     public Transform GetRandomGoalPosition()
@@ -62,7 +71,7 @@ public class Manager4 : MonoBehaviour
     void SpawnGoal()
     {
         Transform spawnPos = GetRandomGoalPosition();
-        GameObject newGoal = Instantiate(dickGoal);
+        newGoal = Instantiate(dickGoal);
 
         newGoal.GetComponent<DickGoal>().OnSpawn(spawnPos.position, this);
     }

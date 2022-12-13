@@ -75,6 +75,11 @@ public class Manager3 : MonoBehaviour
     {
         int newPoints = Random.Range(30, 50);
         points += newPoints;
+
+        if(points >= desiredPoints)
+        {
+            LevelManager.instance.LevelCompleted(Level.Heaven);
+        }
     }
 
     private void OnDrawGizmos()
