@@ -11,12 +11,10 @@ public class ThrowingDick : MonoBehaviour
 
     bool addForce = false;
 
-
-
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        startPos = transform.position;
+        startPos = transform.localPosition;
     }
 
     private void FixedUpdate()
@@ -27,11 +25,11 @@ public class ThrowingDick : MonoBehaviour
 
     public void ResetPosition()
     {
-        transform.position = startPos;
-        transform.rotation = Quaternion.identity;
-        rb.isKinematic = true;
-
         manager.catapult.SetDickParent(transform);
+
+        transform.localPosition = startPos;
+        transform.localRotation = Quaternion.identity;
+        rb.isKinematic = true;
     }
 
     public void OnGrab()
