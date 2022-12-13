@@ -28,6 +28,7 @@ public class CreditsObject : MonoBehaviour
     IEnumerator SpawnSpulHier()
     {
         body.isKinematic = true;
+        body.velocity = Vector3.zero;
         this.gameObject.transform.position = _StartPos;
         this.gameObject.transform.localScale = _Scale;
         yield return new WaitForSeconds(spawnDelay);
