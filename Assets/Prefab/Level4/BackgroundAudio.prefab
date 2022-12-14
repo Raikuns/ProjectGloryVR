@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1238947439586769452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1238947439586769453}
+  - component: {fileID: 1238947439586769459}
+  - component: {fileID: 1238947439586769458}
+  m_Layer: 0
+  m_Name: BackgroundAudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1238947439586769453
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238947439586769452}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1238947439586769459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238947439586769452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928065c2f5b6ee84eafdc0f22229a183, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Emitters:
+  - Target: {fileID: 1238947439586769458}
+    Params: []
+  TriggerEvent: 0
+--- !u!114 &1238947439586769458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238947439586769452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cc546c4c82e3484294cb324de26646a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  SPEEDOFSOUND: 343
+  PlayEvent: 1
+  StopEvent: 0
+  m_UnityAudio: 0
+  hasSetAudioSource: 0
+  audioSourceSettings:
+    isSet: 0
+    clip: {fileID: 0}
+    output: {fileID: 0}
+    mute: 0
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    playOnAwake: 0
+    loop: 0
+    priority: 0
+    volume: 0
+    pitch: 0
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    dopplerLevel: 0
+    spread: 0
+    minDistance: 0
+    maxDistance: 0
+  fmodEvent:
+    Guid:
+      Data1: 1548388396
+      Data2: 1266138487
+      Data3: 735686055
+      Data4: 596706313
+    Path: event:/Heavenly
+  Event: 
+  Params:
+  - Name: Dying
+    Value: 0
+  useSpeedOfSound: 0
+  debugPlay: 0
+  overrideAttenuation: 0
+  minAtten: 10
+  maxAtten: 50
+  cachedParams: []
+  occlusionEnabled: 0
+  occlusionParameterName: 
+  occlusionIntensity: 0.1
+  paramIndex: 0
+  prevIndex: 0
+  logEvents: 0
+  m_AudioClip: {fileID: 0}

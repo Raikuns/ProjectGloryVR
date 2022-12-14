@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{035f5a6f-1861-4f55-9914-f847c23ae4e4}">
+		<property name="assetPath">
+			<value>WelcomeToHeaven!(Alternative).wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>53.073401360544217</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{20ebcf8d-72d7-444d-aee4-3d060649560c}</destination>
+		</relationship>
+	</object>
+</objects>
