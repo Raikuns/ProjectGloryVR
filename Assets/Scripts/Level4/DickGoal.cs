@@ -10,19 +10,25 @@ public class DickGoal : MonoBehaviour
     public LeanTweenType moveType;
     [SerializeField] Transform dickPos;
 
-    ParticleSystem particles;
+    [SerializeField] ParticleSystem splashParticles;
 
     GameObject throwingDick;
 
     Collider col;
 
     CFXR_ParticleText pointParticle;
+    FMODAudioSource splashAudio;
+
+    bool canMove = true;
 
     private void Start()
     {
         pointParticle = GetComponentInChildren<CFXR_ParticleText>();
+        splashAudio = GetComponentInChildren<FMODAudioSource>();
         col = GetComponent<Collider>();
-        particles = GetComponentInChildren<ParticleSystem>();
+
+        if (!canMove)
+            canMove = true;
     }
 
     private void Update()
@@ -38,8 +44,8 @@ public class DickGoal : MonoBehaviour
 
             throwingDick = other.GetComponent<ThrowingDick>().gameObject;
 
+            canMove = false;
             LeanTween.cancel(gameObject);
-
             LeanTween.move(throwingDick, dickPos.position, 0.5f).setEase(moveType).setOnComplete(MoveDown);
 
             col.enabled = false;
@@ -57,6 +63,8 @@ public class DickGoal : MonoBehaviour
 
     void MoveDown()
     {
+        splashAudio.Play();
+        splashParticles.Play();
         throwingDick.transform.localScale = Vector3.zero;
         throwingDick.SetActive(false);
 
@@ -72,9 +80,12 @@ public class DickGoal : MonoBehaviour
 
     void Move()
     {
-        LeanTween.move(gameObject, manager.GetRandomGoalPosition(), spawnMoveTime)
-            .setEase(moveType)
-            .setOnComplete(Move)
-            .setDelay(manager.goalMoveDelay);
+        if (canMove)
+        {
+            LeanTween.move(gameObject, manager.GetRandomGoalPosition(), spawnMoveTime)
+                .setEase(moveType)
+                .setOnComplete(Move)
+                .setDelay(manager.goalMoveDelay);
+        }
     }
 }

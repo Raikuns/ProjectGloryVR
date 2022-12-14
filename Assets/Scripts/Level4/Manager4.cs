@@ -22,9 +22,18 @@ public class Manager4 : MonoBehaviour
     ThrowingDick throwingDick;
     public Catapult catapult;
 
+    //Audio
+    public BackGroundAudioRegulator audioRegulator;
+
+    [SerializeField] CFXR_ParticleText particleText;
+
+    EndSequence endSequence;
 
     private void Start()
     {
+        audioRegulator.manager = this;
+        endSequence = GetComponent<EndSequence>();  
+
         throwingDick = FindObjectOfType<ThrowingDick>();
 
         Transform[] positions = allPoints.GetComponentsInChildren<Transform>();
@@ -40,6 +49,19 @@ public class Manager4 : MonoBehaviour
         LeanTween.delayedCall(2f, SpawnGoal);
 
         UpdatePointsVisual();
+        audioRegulator.AdjustBalance();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            GetPoints(1);
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            RemovePoints(1);
+        }
     }
 
     public void ResetThrowingDick()
@@ -73,15 +95,18 @@ public class Manager4 : MonoBehaviour
         SpawnGoal();
     }
 
+    #region Points
     public void GetPoints(int incomingPoints)
     {
         points += incomingPoints;
 
         UpdatePointsVisual();
+        audioRegulator.AdjustBalance();
 
         if (points >= maxPoints)
         {
-            LevelManager.instance.LoadCredits();
+            endSequence.Win();
+            //LevelManager.instance.LoadCredits();
         }
     }
 
@@ -90,7 +115,27 @@ public class Manager4 : MonoBehaviour
         points -= removedPoints;
 
         UpdatePointsVisual();
+        audioRegulator.AdjustBalance();
+
+        particleText.UpdateText("-" + removedPoints.ToString());
+        particleText.GetComponent<ParticleSystem>().Play();
+
+        if(points <= 0)
+        {
+            endSequence.Lose();
+        }
     }
+
+    void UpdatePointsVisual()
+    {
+        IKTarget.localPosition = new Vector3(IKTarget.localPosition.x, Remap(points, 0, maxPoints, -dickRange, dickRange), IKTarget.localPosition.z);
+    }
+
+    public float Remap(float input, float from1, float to1, float from2, float to2)
+    {
+        return (input - from1) / (to1 - from1) * (to2 - from2) + from2;
+    }
+    #endregion
 
     public Transform GetRandomGoalPosition()
     {
@@ -110,15 +155,5 @@ public class Manager4 : MonoBehaviour
         newGoal = Instantiate(dickGoal);
 
         newGoal.GetComponent<DickGoal>().OnSpawn(spawnPos.position, this);
-    }
-
-    void UpdatePointsVisual()
-    {
-        IKTarget.localPosition = new Vector3(IKTarget.localPosition.x, Remap(points, 0, maxPoints, -dickRange, dickRange), IKTarget.localPosition.z);
-    }
-
-    public float Remap(float input, float from1, float to1, float from2, float to2)
-    {
-        return (input - from1) / (to1 - from1) * (to2 - from2) + from2;
     }
 }
