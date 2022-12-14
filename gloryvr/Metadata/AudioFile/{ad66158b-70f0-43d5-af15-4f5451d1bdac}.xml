@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{ad66158b-70f0-43d5-af15-4f5451d1bdac}">
+		<property name="assetPath">
+			<value>TheCrucible.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>51.339319727891159</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{20ebcf8d-72d7-444d-aee4-3d060649560c}</destination>
+		</relationship>
+	</object>
+</objects>
