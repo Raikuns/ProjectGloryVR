@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{6a8f5512-134b-4fc6-891f-3ba3e02ac092}">
 		<property name="assetPath">
-			<value>WaterSplash.wav</value>
+			<value>Heaven/WaterSplash.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>96</value>

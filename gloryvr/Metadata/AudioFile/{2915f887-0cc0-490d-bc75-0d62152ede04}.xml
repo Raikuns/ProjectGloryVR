@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{2915f887-0cc0-490d-bc75-0d62152ede04}">
 		<property name="assetPath">
-			<value>CatapultAudio.wav</value>
+			<value>Heaven/CatapultAudio.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>96</value>

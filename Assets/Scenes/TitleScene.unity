@@ -2595,7 +2595,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1238947439586769458, guid: fc74678da90201b40b2e9bac528ae913,
+        type: 3}
+      propertyPath: fmodEvent.Path
+      value: event:/TitleScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238947439586769458, guid: fc74678da90201b40b2e9bac528ae913,
+        type: 3}
+      propertyPath: fmodEvent.Guid.Data1
+      value: 1617395003
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238947439586769458, guid: fc74678da90201b40b2e9bac528ae913,
+        type: 3}
+      propertyPath: fmodEvent.Guid.Data2
+      value: 1272100367
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238947439586769458, guid: fc74678da90201b40b2e9bac528ae913,
+        type: 3}
+      propertyPath: fmodEvent.Guid.Data3
+      value: 673429642
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238947439586769458, guid: fc74678da90201b40b2e9bac528ae913,
+        type: 3}
+      propertyPath: fmodEvent.Guid.Data4
+      value: 1859614614
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1238947439586769459, guid: fc74678da90201b40b2e9bac528ae913, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fc74678da90201b40b2e9bac528ae913, type: 3}
 --- !u!1001 &934441179
 PrefabInstance:

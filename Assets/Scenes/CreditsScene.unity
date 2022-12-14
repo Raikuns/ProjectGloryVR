@@ -5954,7 +5954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5958d6fb48a9b2c44926422a424ec601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 1
+  spawnDelay: 3
   lifetime: 2
   hasFinished: 0
   _Time: 0.2

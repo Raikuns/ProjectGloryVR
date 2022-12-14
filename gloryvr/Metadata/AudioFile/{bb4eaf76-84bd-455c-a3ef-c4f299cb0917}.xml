@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{bb4eaf76-84bd-455c-a3ef-c4f299cb0917}">
 		<property name="assetPath">
-			<value>MysticChoir.wav</value>
+			<value>Heaven/MysticChoir.wav</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>
