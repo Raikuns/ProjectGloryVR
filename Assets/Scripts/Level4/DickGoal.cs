@@ -16,8 +16,11 @@ public class DickGoal : MonoBehaviour
 
     Collider col;
 
+    CFXR_ParticleText pointParticle;
+
     private void Start()
     {
+        pointParticle = GetComponentInChildren<CFXR_ParticleText>();
         col = GetComponent<Collider>();
         particles = GetComponentInChildren<ParticleSystem>();
     }
@@ -54,17 +57,16 @@ public class DickGoal : MonoBehaviour
 
     void MoveDown()
     {
-        particles.Play();
-
         throwingDick.transform.localScale = Vector3.zero;
         throwingDick.SetActive(false);
+
+        manager.GoalHit(pointParticle);
+
         LeanTween.moveY(gameObject, -7, spawnMoveTime).setEase(moveType).setOnComplete(DeleteToilet);
     }
 
     void DeleteToilet()
     {
-        manager.GoalHit();
-
         Destroy(gameObject);
     }
 
