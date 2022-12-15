@@ -8,7 +8,7 @@
 			<value>true</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{e831074c-541b-4c80-9650-6f819c7869d8}</destination>
@@ -96,7 +96,7 @@
 			<value>1.6654687500000001</value>
 		</property>
 		<relationship name="modulators">
-			<destination>{ab78659f-5356-48ca-a086-276f56326fca}</destination>
+			<destination>{716494b8-a5a3-4763-8426-9071b21ee06b}</destination>
 		</relationship>
 		<relationship name="audioFile">
 			<destination>{6a8f5512-134b-4fc6-891f-3ba3e02ac092}</destination>
@@ -124,16 +124,17 @@
 	</object>
 	<object class="MixerBusPanner" id="{24595825-e1ba-48d9-83db-4bb5a37c4037}" />
 	<object class="MixerBusFader" id="{0697a72f-184d-418a-ba73-616b664e597d}" />
-	<object class="RandomizerModulator" id="{ab78659f-5356-48ca-a086-276f56326fca}">
+	<object class="RandomizerModulator" id="{716494b8-a5a3-4763-8426-9071b21ee06b}">
 		<property name="nameOfPropertyBeingModulated">
 			<value>pitch</value>
 		</property>
 		<property name="amount">
-			<value>13</value>
+			<value>12.5</value>
 		</property>
 	</object>
 	<object class="MixerBusEffectChain" id="{0be55497-08da-46d5-87e5-5cbd04dc1f5b}">
 		<relationship name="effects">
+			<destination>{4b17e5db-5c8e-4160-96c7-d7006e3205d8}</destination>
 			<destination>{a0cb5ac8-833d-40ba-8993-13bb8477bd3d}</destination>
 			<destination>{89727264-ca76-4ac6-877f-7fe425f8c3b9}</destination>
 		</relationship>
@@ -144,6 +145,11 @@
 		<relationship name="plugin">
 			<destination>{b8e65cbb-cdce-47ce-91eb-f379be41101f}</destination>
 		</relationship>
+	</object>
+	<object class="SpatialiserEffect" id="{4b17e5db-5c8e-4160-96c7-d7006e3205d8}">
+		<property name="userStereoSeparation">
+			<value>0</value>
+		</property>
 	</object>
 	<object class="MixerBusFader" id="{a0cb5ac8-833d-40ba-8993-13bb8477bd3d}" />
 	<object class="PluginEffect" id="{89727264-ca76-4ac6-877f-7fe425f8c3b9}">
@@ -262,7 +268,6 @@
 		<property name="name">
 			<value>Attenuation Ran</value>
 		</property>
-		<property name="value" />
 		<property name="dataType">
 			<value>-6</value>
 		</property>
@@ -271,7 +276,6 @@
 		<property name="name">
 			<value>3D Attributes</value>
 		</property>
-		<property name="value" />
 		<property name="dataType">
 			<value>-2</value>
 		</property>
@@ -307,7 +311,6 @@
 		<property name="name">
 			<value>Overall Gain</value>
 		</property>
-		<property name="value" />
 		<property name="dataType">
 			<value>-1</value>
 		</property>
@@ -385,7 +388,6 @@
 		<property name="name">
 			<value>Attenuation Ran</value>
 		</property>
-		<property name="value" />
 		<property name="dataType">
 			<value>-6</value>
 		</property>
@@ -394,7 +396,6 @@
 		<property name="name">
 			<value>3D Attributes</value>
 		</property>
-		<property name="value" />
 		<property name="dataType">
 			<value>-2</value>
 		</property>
@@ -430,7 +431,6 @@
 		<property name="name">
 			<value>Overall Gain</value>
 		</property>
-		<property name="value" />
 		<property name="dataType">
 			<value>-1</value>
 		</property>

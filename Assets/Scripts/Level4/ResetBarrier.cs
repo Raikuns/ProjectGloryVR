@@ -10,7 +10,10 @@ public class ResetBarrier : MonoBehaviour
     {
         if (other.GetComponent<ThrowingDick>())
         {
+            other.gameObject.transform.localScale = Vector3.zero;
+            other.gameObject.SetActive(false);
             Manager.ResetThrowingDick();
+            Manager.RemovePoints(Random.Range(5, 10));
         }
     }
 }
