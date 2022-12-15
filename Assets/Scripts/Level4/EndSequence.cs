@@ -10,6 +10,8 @@ public class EndSequence : MonoBehaviour
     [Header("Win")]
     [SerializeField] Color winFilter;
     bool winColor = false;
+    [SerializeField] GameObject halo;
+    [SerializeField] GameObject wings;
     [Range(0, 1)] public int _;
 
     [Header("Lose")]
@@ -17,8 +19,6 @@ public class EndSequence : MonoBehaviour
     bool loseColor = false;
     [SerializeField] GameObject horns;
     [SerializeField] GameObject pitchfork;
-    [SerializeField] float scaleTime;
-    [SerializeField] LeanTweenType scaleType;
     [Range(0, 1)] public int __;
 
     [Header("Main")]
@@ -26,6 +26,8 @@ public class EndSequence : MonoBehaviour
     [SerializeField] Volume postProcessing;
     [SerializeField] float speed = 1.0f;
     float startTime;
+    [SerializeField] float scaleTime;
+    [SerializeField] LeanTweenType scaleType;
 
     #region Main
     private void Start()
@@ -57,6 +59,14 @@ public class EndSequence : MonoBehaviour
     public void Win()
     {
         startTime = Time.time;
+
+        ScaleHaloAndWings();
+    }
+
+    void ScaleHaloAndWings()
+    {
+        LeanTween.scale(halo, Vector3.one, scaleTime).setEase(scaleType);
+        LeanTween.scale(wings, Vector3.one, scaleTime).setEase(scaleType);
     }
     #endregion
 
