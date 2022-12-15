@@ -15,6 +15,10 @@ public class EndSequence : MonoBehaviour
     [Header("Lose")]
     [SerializeField] Color loseFilter;
     bool loseColor = false;
+    [SerializeField] GameObject horns;
+    [SerializeField] GameObject pitchfork;
+    [SerializeField] float scaleTime;
+    [SerializeField] LeanTweenType scaleType;
     [Range(0, 1)] public int __;
 
     [Header("Main")]
@@ -62,7 +66,13 @@ public class EndSequence : MonoBehaviour
         startTime = Time.time;
         loseColor = true;  
 
-        LeanTween.value(0, .3f, 2f).setOnUpdate(UpdateVolumeWeight);
+        LeanTween.value(0, .3f, 2f).setOnUpdate(UpdateVolumeWeight).setOnComplete(ScaleHornsAndPitchfork);
+    }
+
+    void ScaleHornsAndPitchfork()
+    {
+        LeanTween.scale(horns, Vector3.one, scaleTime).setEase(scaleType);
+        LeanTween.scale(pitchfork, Vector3.one, scaleTime).setEase(scaleType);
     }
     #endregion
 }
