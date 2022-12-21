@@ -74,7 +74,7 @@
 			<destination>{1113b404-070a-4388-b64d-56bae3a0c3a7}</destination>
 		</relationship>
 		<relationship name="markers">
-			<destination>{b700cf90-dc85-4b66-b859-6d270066a0a9}</destination>
+			<destination>{53fe46c6-99ea-4b47-a359-3907c3bf8ee0}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{e3e07aa7-b505-44da-9c52-61b80e7161dd}">
@@ -95,11 +95,14 @@
 	</object>
 	<object class="MixerBusPanner" id="{acddbec5-6be6-4d7a-84bf-e14e64d7807a}" />
 	<object class="SingleSound" id="{1113b404-070a-4388-b64d-56bae3a0c3a7}">
-		<property name="length">
-			<value>2.0432879818594101</value>
+		<property name="isAsync">
+			<value>true</value>
 		</property>
-		<property name="timelockedOffset">
-			<value>0.10000000000000001</value>
+		<property name="length">
+			<value>2.1432879818594106</value>
+		</property>
+		<property name="pitch">
+			<value>-3.60000014</value>
 		</property>
 		<property name="looping">
 			<value>true</value>
@@ -122,12 +125,12 @@
 			<destination>{e3e07aa7-b505-44da-9c52-61b80e7161dd}</destination>
 		</relationship>
 	</object>
-	<object class="LoopRegion" id="{b700cf90-dc85-4b66-b859-6d270066a0a9}">
+	<object class="LoopRegion" id="{53fe46c6-99ea-4b47-a359-3907c3bf8ee0}">
 		<property name="position">
 			<value>0</value>
 		</property>
 		<property name="length">
-			<value>2.0432879818594105</value>
+			<value>2.1432879818594106</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{55a8947a-139d-46b5-8164-b756f03e93fd}</destination>
@@ -251,6 +254,7 @@
 		<property name="name">
 			<value>Attenuation Ran</value>
 		</property>
+		<property name="value" />
 		<property name="dataType">
 			<value>-6</value>
 		</property>
@@ -259,6 +263,7 @@
 		<property name="name">
 			<value>3D Attributes</value>
 		</property>
+		<property name="value" />
 		<property name="dataType">
 			<value>-2</value>
 		</property>
@@ -294,6 +299,7 @@
 		<property name="name">
 			<value>Overall Gain</value>
 		</property>
+		<property name="value" />
 		<property name="dataType">
 			<value>-1</value>
 		</property>

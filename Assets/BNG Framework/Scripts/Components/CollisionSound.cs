@@ -17,6 +17,9 @@ namespace BNG {
 
         Grabbable grab;
 
+        public float MinPitch, MaxPitch;
+
+
         /// <summary>
         /// Volume will never be played below this amount. 0-1
         /// </summary>
@@ -88,7 +91,7 @@ namespace BNG {
                 }
 
                 audioSource.clip = CollisionAudio;
-                audioSource.pitch = Time.timeScale;
+                audioSource.pitch = Random.Range(MinPitch, MaxPitch);
                 audioSource.volume = soundVolume;
                 audioSource.Play();
 

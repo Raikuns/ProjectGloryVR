@@ -291,10 +291,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c575c9380b9d239499fadf100ef2800b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionAudio: {fileID: 0}
+  CollisionAudio: {fileID: 8300000, guid: 213410df47301124d8c1fca8c1b5ea8d, type: 3}
+  MinPitch: 0.85
+  MaxPitch: 1.2
   MinimumVolume: 0.25
   MaximumVolume: 1
-  RecentlyPlayedSound: 0
+  RecentlyPlayedSound: 1
   LastRelativeVelocity: 0
 --- !u!1001 &131471507
 PrefabInstance:
@@ -996,7 +998,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1326411939}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1166,10 +1169,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c575c9380b9d239499fadf100ef2800b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionAudio: {fileID: 0}
+  CollisionAudio: {fileID: 8300000, guid: 213410df47301124d8c1fca8c1b5ea8d, type: 3}
+  MinPitch: 0.85
+  MaxPitch: 1.2
   MinimumVolume: 0.25
   MaximumVolume: 1
-  RecentlyPlayedSound: 0
+  RecentlyPlayedSound: 1
   LastRelativeVelocity: 0
 --- !u!1001 &486378591
 PrefabInstance:
@@ -1337,10 +1342,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c575c9380b9d239499fadf100ef2800b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionAudio: {fileID: 0}
+  CollisionAudio: {fileID: 8300000, guid: 213410df47301124d8c1fca8c1b5ea8d, type: 3}
+  MinPitch: 0.85
+  MaxPitch: 1.2
   MinimumVolume: 0.25
   MaximumVolume: 1
-  RecentlyPlayedSound: 0
+  RecentlyPlayedSound: 1
   LastRelativeVelocity: 0
 --- !u!1001 &513503782
 PrefabInstance:
@@ -1663,10 +1670,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c575c9380b9d239499fadf100ef2800b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionAudio: {fileID: 0}
+  CollisionAudio: {fileID: 8300000, guid: 213410df47301124d8c1fca8c1b5ea8d, type: 3}
+  MinPitch: 0.85
+  MaxPitch: 1.2
   MinimumVolume: 0.25
   MaximumVolume: 1
-  RecentlyPlayedSound: 0
+  RecentlyPlayedSound: 1
   LastRelativeVelocity: 0
 --- !u!1 &553504596
 GameObject:
@@ -2346,10 +2355,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c575c9380b9d239499fadf100ef2800b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionAudio: {fileID: 0}
+  CollisionAudio: {fileID: 8300000, guid: 213410df47301124d8c1fca8c1b5ea8d, type: 3}
+  MinPitch: 0.85
+  MaxPitch: 1.2
   MinimumVolume: 0.25
   MaximumVolume: 1
-  RecentlyPlayedSound: 0
+  RecentlyPlayedSound: 1
   LastRelativeVelocity: 0
 --- !u!1 &776963324
 GameObject:
@@ -3532,10 +3543,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c575c9380b9d239499fadf100ef2800b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionAudio: {fileID: 0}
+  CollisionAudio: {fileID: 8300000, guid: 213410df47301124d8c1fca8c1b5ea8d, type: 3}
+  MinPitch: 0.85
+  MaxPitch: 1.2
   MinimumVolume: 0.25
   MaximumVolume: 1
-  RecentlyPlayedSound: 0
+  RecentlyPlayedSound: 1
   LastRelativeVelocity: 0
 --- !u!1001 &1008322000
 PrefabInstance:
@@ -3953,10 +3966,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c575c9380b9d239499fadf100ef2800b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionAudio: {fileID: 0}
+  CollisionAudio: {fileID: 8300000, guid: 213410df47301124d8c1fca8c1b5ea8d, type: 3}
+  MinPitch: 0.85
+  MaxPitch: 1.2
   MinimumVolume: 0.25
   MaximumVolume: 1
-  RecentlyPlayedSound: 0
+  RecentlyPlayedSound: 1
   LastRelativeVelocity: 0
 --- !u!1001 &1058878175
 PrefabInstance:
@@ -4235,10 +4250,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c575c9380b9d239499fadf100ef2800b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionAudio: {fileID: 0}
+  CollisionAudio: {fileID: 8300000, guid: 213410df47301124d8c1fca8c1b5ea8d, type: 3}
+  MinPitch: 0.85
+  MaxPitch: 1.2
   MinimumVolume: 0.25
   MaximumVolume: 1
-  RecentlyPlayedSound: 0
+  RecentlyPlayedSound: 1
   LastRelativeVelocity: 0
 --- !u!1001 &1121936142
 PrefabInstance:
@@ -4616,10 +4633,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c575c9380b9d239499fadf100ef2800b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionAudio: {fileID: 0}
+  CollisionAudio: {fileID: 8300000, guid: 213410df47301124d8c1fca8c1b5ea8d, type: 3}
+  MinPitch: 0.85
+  MaxPitch: 1.2
   MinimumVolume: 0.25
   MaximumVolume: 1
-  RecentlyPlayedSound: 0
+  RecentlyPlayedSound: 1
   LastRelativeVelocity: 0
 --- !u!1001 &1270008432
 PrefabInstance:
@@ -4787,10 +4806,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c575c9380b9d239499fadf100ef2800b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionAudio: {fileID: 0}
+  CollisionAudio: {fileID: 8300000, guid: 213410df47301124d8c1fca8c1b5ea8d, type: 3}
+  MinPitch: 0.85
+  MaxPitch: 1.2
   MinimumVolume: 0.25
   MaximumVolume: 1
-  RecentlyPlayedSound: 0
+  RecentlyPlayedSound: 1
   LastRelativeVelocity: 0
 --- !u!1 &1280104943
 GameObject:
@@ -4857,6 +4878,81 @@ ReflectionProbe:
   m_UseOcclusionCulling: 1
   m_Importance: 1
   m_CustomBakedTexture: {fileID: 0}
+--- !u!1001 &1326411938
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 457905802}
+    m_Modifications:
+    - target: {fileID: 1238947439586769452, guid: fc74678da90201b40b2e9bac528ae913,
+        type: 3}
+      propertyPath: m_Name
+      value: BackgroundAudio
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238947439586769453, guid: fc74678da90201b40b2e9bac528ae913,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238947439586769453, guid: fc74678da90201b40b2e9bac528ae913,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238947439586769453, guid: fc74678da90201b40b2e9bac528ae913,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238947439586769453, guid: fc74678da90201b40b2e9bac528ae913,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238947439586769453, guid: fc74678da90201b40b2e9bac528ae913,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238947439586769453, guid: fc74678da90201b40b2e9bac528ae913,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238947439586769453, guid: fc74678da90201b40b2e9bac528ae913,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238947439586769453, guid: fc74678da90201b40b2e9bac528ae913,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238947439586769453, guid: fc74678da90201b40b2e9bac528ae913,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238947439586769453, guid: fc74678da90201b40b2e9bac528ae913,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238947439586769453, guid: fc74678da90201b40b2e9bac528ae913,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fc74678da90201b40b2e9bac528ae913, type: 3}
+--- !u!4 &1326411939 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1238947439586769453, guid: fc74678da90201b40b2e9bac528ae913,
+    type: 3}
+  m_PrefabInstance: {fileID: 1326411938}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1349383280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5271,10 +5367,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c575c9380b9d239499fadf100ef2800b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionAudio: {fileID: 0}
+  CollisionAudio: {fileID: 8300000, guid: 213410df47301124d8c1fca8c1b5ea8d, type: 3}
+  MinPitch: 0.85
+  MaxPitch: 1.2
   MinimumVolume: 0.25
   MaximumVolume: 1
-  RecentlyPlayedSound: 0
+  RecentlyPlayedSound: 1
   LastRelativeVelocity: 0
 --- !u!4 &1641746968 stripped
 Transform:
@@ -5856,7 +5954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5958d6fb48a9b2c44926422a424ec601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 1
+  spawnDelay: 3
   lifetime: 2
   hasFinished: 0
   _Time: 0.2
@@ -5875,10 +5973,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c575c9380b9d239499fadf100ef2800b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionAudio: {fileID: 0}
+  CollisionAudio: {fileID: 8300000, guid: 213410df47301124d8c1fca8c1b5ea8d, type: 3}
+  MinPitch: 0.85
+  MaxPitch: 1.2
   MinimumVolume: 0.25
   MaximumVolume: 1
-  RecentlyPlayedSound: 0
+  RecentlyPlayedSound: 1
   LastRelativeVelocity: 0
 --- !u!1 &2003209529
 GameObject:
@@ -6242,10 +6342,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c575c9380b9d239499fadf100ef2800b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionAudio: {fileID: 0}
+  CollisionAudio: {fileID: 8300000, guid: 213410df47301124d8c1fca8c1b5ea8d, type: 3}
+  MinPitch: 0.85
+  MaxPitch: 1.2
   MinimumVolume: 0.25
   MaximumVolume: 1
-  RecentlyPlayedSound: 0
+  RecentlyPlayedSound: 1
   LastRelativeVelocity: 0
 --- !u!1001 &2068459654
 PrefabInstance:
@@ -6534,8 +6636,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c575c9380b9d239499fadf100ef2800b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionAudio: {fileID: 0}
+  CollisionAudio: {fileID: 8300000, guid: 213410df47301124d8c1fca8c1b5ea8d, type: 3}
+  MinPitch: 0.85
+  MaxPitch: 1.2
   MinimumVolume: 0.25
   MaximumVolume: 1
-  RecentlyPlayedSound: 0
+  RecentlyPlayedSound: 1
   LastRelativeVelocity: 0
