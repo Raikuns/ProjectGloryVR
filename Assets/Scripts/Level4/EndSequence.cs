@@ -1,9 +1,12 @@
 using FIMSpace;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using PathCreation;
+using PathCreation.Examples;
 
 public class EndSequence : MonoBehaviour
 {
@@ -12,6 +15,7 @@ public class EndSequence : MonoBehaviour
     bool winColor = false;
     [SerializeField] GameObject halo;
     [SerializeField] GameObject wings;
+    [SerializeField] PathCreator winPath;
     [Range(0, 1)] public int _;
 
     [Header("Lose")]
@@ -19,6 +23,7 @@ public class EndSequence : MonoBehaviour
     bool loseColor = false;
     [SerializeField] GameObject horns;
     [SerializeField] GameObject pitchfork;
+    [SerializeField] PathCreator losePath;
     [Range(0, 1)] public int __;
 
     [Header("Main")]
@@ -28,6 +33,8 @@ public class EndSequence : MonoBehaviour
     float startTime;
     [SerializeField] float scaleTime;
     [SerializeField] LeanTweenType scaleType;
+    [SerializeField] PathFollower pathFollower;
+    [SerializeField] GameObject dick;
 
     #region Main
     private void Start()
@@ -53,6 +60,19 @@ public class EndSequence : MonoBehaviour
     {
         postProcessing.weight = value;
     }
+
+    void ChangePath(PathCreator path)
+    {
+        pathFollower.pathCreator = path;
+        pathFollower.StartFollowing();
+
+        LeanTween.delayedCall(5, LoadCredits);
+    }
+
+    void LoadCredits()
+    {
+        LevelManager.instance.LoadCredits();
+    }
     #endregion
 
     #region Win
@@ -67,6 +87,14 @@ public class EndSequence : MonoBehaviour
     {
         LeanTween.scale(halo, Vector3.one, scaleTime).setEase(scaleType);
         LeanTween.scale(wings, Vector3.one, scaleTime).setEase(scaleType);
+
+        LeanTween.delayedCall(2f, FlyToHeaven);
+        LeanTween.move(dick, winPath.path.GetPoint(0), 2f);
+    }
+
+    void FlyToHeaven()
+    {
+        ChangePath(winPath);
     }
     #endregion
 
@@ -74,7 +102,7 @@ public class EndSequence : MonoBehaviour
     public void Lose()
     {
         startTime = Time.time;
-        loseColor = true;  
+        loseColor = true;
 
         LeanTween.value(0, .3f, 2f).setOnUpdate(UpdateVolumeWeight).setOnComplete(ScaleHornsAndPitchfork);
     }
@@ -83,6 +111,14 @@ public class EndSequence : MonoBehaviour
     {
         LeanTween.scale(horns, Vector3.one, scaleTime).setEase(scaleType);
         LeanTween.scale(pitchfork, Vector3.one, scaleTime).setEase(scaleType);
+
+        LeanTween.delayedCall(2f, DropDownToHell);
+        LeanTween.move(dick, losePath.path.GetPoint(0), 2f);
+    }
+
+    void DropDownToHell()
+    {
+        ChangePath(losePath);
     }
     #endregion
 }

@@ -11,6 +11,8 @@ namespace PathCreation.Examples
         public float speed = 5;
         float distanceTravelled;
 
+        bool shouldFollow = false;
+
         void Start() {
             if (pathCreator != null)
             {
@@ -21,12 +23,25 @@ namespace PathCreation.Examples
 
         void Update()
         {
+            if (!shouldFollow)
+                return;
+
             if (pathCreator != null)
             {
                 distanceTravelled += speed * Time.deltaTime;
                 transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
                 transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
+
+                if(transform.position == pathCreator.path.GetPointAtTime(1))
+                {
+                    print("Done");
+                }
             }
+        }
+
+        public void StartFollowing()
+        {
+            shouldFollow = true;
         }
 
         // If the path changes during the game, update the distance travelled so that the follower's position on the new path
