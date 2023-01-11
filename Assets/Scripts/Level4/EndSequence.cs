@@ -16,6 +16,7 @@ public class EndSequence : MonoBehaviour
     [SerializeField] GameObject halo;
     [SerializeField] GameObject wings;
     [SerializeField] PathCreator winPath;
+    [SerializeField] Animator gatesAnim;  
     [Range(0, 1)] public int _;
 
     [Header("Lose")]
@@ -23,7 +24,6 @@ public class EndSequence : MonoBehaviour
     bool loseColor = false;
     [SerializeField] GameObject horns;
     [SerializeField] GameObject pitchfork;
-    [SerializeField] PathCreator losePath;
     [Range(0, 1)] public int __;
 
     [Header("Main")]
@@ -35,6 +35,7 @@ public class EndSequence : MonoBehaviour
     [SerializeField] LeanTweenType scaleType;
     [SerializeField] PathFollower pathFollower;
     [SerializeField] GameObject dick;
+    [SerializeField] Animator anim;
 
     #region Main
     private void Start()
@@ -89,12 +90,12 @@ public class EndSequence : MonoBehaviour
         LeanTween.scale(wings, Vector3.one, scaleTime).setEase(scaleType);
 
         LeanTween.delayedCall(2f, FlyToHeaven);
-        LeanTween.move(dick, winPath.path.GetPoint(0), 2f);
     }
 
     void FlyToHeaven()
     {
-        ChangePath(winPath);
+        anim.SetTrigger("Win");
+        gatesAnim.SetTrigger("Open");
     }
     #endregion
 
@@ -113,12 +114,11 @@ public class EndSequence : MonoBehaviour
         LeanTween.scale(pitchfork, Vector3.one, scaleTime).setEase(scaleType);
 
         LeanTween.delayedCall(2f, DropDownToHell);
-        LeanTween.move(dick, losePath.path.GetPoint(0), 2f);
     }
 
     void DropDownToHell()
     {
-        ChangePath(losePath);
+        anim.SetTrigger("Lose");
     }
     #endregion
 }
