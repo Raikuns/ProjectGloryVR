@@ -41,7 +41,8 @@ QualitySettings:
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
     customRenderPipeline: {fileID: 0}
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Android
   - serializedVersion: 2
     name: Quest
     pixelLightCount: 1
@@ -80,5 +81,6 @@ QualitySettings:
       type: 2}
     excludedTargetPlatforms: []
   m_PerPlatformDefaultQuality:
-    Android: 0
-    Standalone: 0
+    Android: 1
+    Server: 1
+    Standalone: 1
