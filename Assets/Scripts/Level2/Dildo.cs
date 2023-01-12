@@ -1,3 +1,4 @@
+using FIMSpace.FTail;
 using UnityEngine;
 
 public class Dildo : MonoBehaviour
@@ -6,9 +7,15 @@ public class Dildo : MonoBehaviour
 
     [SerializeField] public GameObject moveableDick;
 
+    TailAnimator2 tailAnim;
+    Transform startedOnBone;
+
     public float availablePoints = 10;
     float basePoints;
     bool decreasePoints = false;
+
+    public Transform dickBone;
+    Quaternion startRot;
 
     [HideInInspector] public DildoHandler handler;
 
@@ -23,6 +30,10 @@ public class Dildo : MonoBehaviour
         basePoints = availablePoints;
         dick = GetComponentInChildren<RopeGrabber>();
         dick.dildo = this;
+
+        tailAnim = GetComponentInChildren<TailAnimator2>();
+        startedOnBone = tailAnim.StartBone;
+        startRot = dickBone.rotation;
 
         moveableDick = dick.transform.parent.gameObject;
     }
@@ -56,6 +67,9 @@ public class Dildo : MonoBehaviour
 
     public void BackToOrigin()
     {
+        tailAnim.StartBone = startedOnBone;
+        dickBone.rotation = startRot;
+
         LeanTween.move(moveableDick, startPos, 0.2f).setOnComplete(GetNewDildo);
         decreasePoints = false;
     }
@@ -87,5 +101,10 @@ public class Dildo : MonoBehaviour
     {
         handler.OnDildoPulled(availablePoints);
         BackToOrigin();
+    }
+
+    public void OnGrab()
+    {
+        tailAnim.StartBone = dickBone;
     }
 }

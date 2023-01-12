@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Oculus.Interaction.HandGrab;
 using UnityEngine;
 using BNG;
+using FIMSpace.FTail;
 
 public class FallingDick : MonoBehaviour
 {
@@ -11,16 +12,23 @@ public class FallingDick : MonoBehaviour
     Collider col;
     public float gravityMultiplier = -5;
     [HideInInspector] public Manager3 manager;
-    public float fadeinTime = 1f;
+    public float appearSpeed = 1f;
 
-    [SerializeField] SkinnedMeshRenderer mesh;
+    PointableUnityEventWrapper events;
+    public LeanTweenType appearCurve;
+    TailAnimator2 tail;
+
+    public GameObject[] disableParticles;
+    public GameObject[] grabbedParticles;
+    bool grabbed = false;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
-
-        LeanTween.value(0, 1, fadeinTime).setOnUpdate(UpdateAlpha);
+        events = GetComponent<PointableUnityEventWrapper>();
+        events.WhenUnselect.AddListener(OnRelease);
+        tail = GetComponent<TailAnimator2>();
     }
 
     private void FixedUpdate()
@@ -28,36 +36,94 @@ public class FallingDick : MonoBehaviour
         rb.AddForce(new Vector3(0, gravityMultiplier, 0));
     }
 
-    void UpdateAlpha(float value)
+    public void Init(Manager3 man)
     {
-        if (mesh == null)
-            return;
-
-        mesh.material.color = new Color(1, 1, 1, value);
+        manager = man;
+        gameObject.SetActive(false);
+        transform.localScale = Vector3.zero;
+        tail.enabled = false;
     }
 
-    public void FadeOut(bool turnStatic)
+    public void Missed()
+    {
+        manager.Missed();
+        Dissapear(true);
+    }
+
+    public void Dissapear(bool turnStatic)
     {
         if (turnStatic)
         {
             rb.isKinematic = turnStatic;
             col.enabled = false;
         }
-        LeanTween.value(1, 0, fadeinTime).setOnUpdate(UpdateAlpha).setOnComplete(DestroyMe);
+        LeanTween.scale(gameObject, Vector3.zero, appearSpeed).setOnComplete(DisableMe).setEase(appearCurve);
     }
 
-    void DestroyMe()
+    public void Appear(bool startStatic)
     {
-        Destroy(gameObject);
+        grabbed = false;
+
+        if (startStatic)
+        {
+            ToggleStatic(true);
+        }
+
+        LeanTween.scale(gameObject, Vector3.one, appearSpeed).setEase(appearCurve).setOnComplete(TurnDynamic);
     }
 
-    public void OnGrab()
+    void TurnDynamic()
     {
-        manager.DropItems();
+        ToggleStatic(false);
+        tail.enabled = true;
+    }
+
+    void ToggleStatic(bool isStatic)
+    {
+        if (isStatic)
+        {
+            col.enabled = false;
+        }
+        else
+        {
+            col.enabled = true;
+            rb.useGravity = true;
+        }
+
+        rb.isKinematic = isStatic;
+    }
+
+    void DisableMe()
+    {
+        gameObject.SetActive(false);
+
+        if (!grabbed)
+        {
+            var obj = Instantiate(disableParticles[Random.Range(0, disableParticles.Length)], transform.position, Quaternion.identity);
+            obj.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        }
+        else
+        {
+            var obj = Instantiate(grabbedParticles[Random.Range(0, 2)], transform.position, Quaternion.identity);
+            obj.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        }
+    }
+
+    //public void OnGrab()
+    //{
+    //    rb.isKinematic = true;
+    //}
+
+    public void OnRelease()
+    {
+        grabbed = true;
+
         rb.isKinematic = true;
+        rb.useGravity = false;
+
+        manager.MoveDickToGoal(gameObject);
         manager.CaughtDick();
 
-        //fade out GFX
-        Destroy(gameObject);
+        LeanTween.delayedCall(0.5f, DisableMe);
     }
 }
