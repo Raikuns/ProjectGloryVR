@@ -10,7 +10,7 @@ public class DestroyArea : MonoBehaviour
     {
         if (other.GetComponent<FallingDick>())
         {
-            other.GetComponent<FallingDick>().FadeOut(true);
+            other.GetComponent<FallingDick>().Missed();
         }
     }
 }

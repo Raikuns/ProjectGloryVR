@@ -51,7 +51,7 @@ public class Catapult : MonoBehaviour
 
         float distance = Vector3.Distance(bucket.position, centerPoint.position);
 
-        shootingPower = distance * 700;
+        shootingPower = distance * 900;
 
         if (powerText != null)
             powerText.text = shootingPower.ToString();

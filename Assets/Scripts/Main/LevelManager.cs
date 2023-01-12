@@ -8,6 +8,8 @@ public class LevelManager : MonoBehaviour
     public LevelData[] levels;
     public LevelData selectedLevel;
 
+    [HideInInspector] public PauseManager pauseManager;
+
     public static LevelManager instance;
 
     private void Awake()
@@ -52,7 +54,12 @@ public class LevelManager : MonoBehaviour
     public void LevelCompleted(Level nextLevel)
     {
         UnlockLevel(nextLevel);
-        BackToMain();
+        OnLevelComplete();
+    }
+
+    void OnLevelComplete()
+    {
+        pauseManager.OnLevelComplete();
     }
 
     public void UnlockLevel(Level level)
@@ -69,5 +76,7 @@ public class LevelManager : MonoBehaviour
         {
             levels[3].unlocked = true;
         }
+
+        SelectLevel(level);
     }
 }

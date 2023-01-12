@@ -19,7 +19,7 @@ public class RopeGrabber : MonoBehaviour
 
     PointableUnityEventWrapper eventWrapper;
 
-    [HideInInspector]public Dildo dildo;
+    [HideInInspector] public Dildo dildo;
 
     private void Start()
     {
@@ -55,6 +55,16 @@ public class RopeGrabber : MonoBehaviour
         }
     }
 
+    private void LateUpdate()
+    {
+        if (grabbed)
+        {
+
+            dildo.dickBone.transform.position = transform.position;
+            dildo.dickBone.transform.rotation = transform.rotation * Quaternion.Euler(0, 0, -90);
+        }
+    }
+
     public void OnGrab()
     {
         for (int y = 0; y < grabbables.Length; y++)
@@ -69,6 +79,8 @@ public class RopeGrabber : MonoBehaviour
         }
 
         grabbed = true;
+
+        dildo.OnGrab();
     }
 
     public void OnRelease()

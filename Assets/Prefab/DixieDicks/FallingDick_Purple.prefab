@@ -165,15 +165,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4929465319094122656}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c756620e4b10f47498ff6deb5ca35826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gravityMultiplier: 7.5
   manager: {fileID: 0}
-  fadeinTime: 1
-  mesh: {fileID: 2906643898302730724}
+  appearSpeed: 1
+  appearCurve: 13
 --- !u!54 &4929465319094122659
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -185,7 +185,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4929465319094122656}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2f8f6e9e6f3e114b9bf9a57c2160615, type: 3}
   m_Name: 
@@ -241,19 +241,7 @@ MonoBehaviour:
       m_Calls: []
   _whenSelect:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4929465319094122684}
-        m_TargetAssemblyTypeName: FallingDick, Assembly-CSharp
-        m_MethodName: OnGrab
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _whenUnselect:
     m_PersistentCalls:
       m_Calls: []
@@ -1137,12 +1125,6 @@ Transform:
 --- !u!4 &2892816780662503929 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1577739753267978444, guid: cecca1aaec347dd4f8ad7d9ef30ea934,
-    type: 3}
-  m_PrefabInstance: {fileID: 4449583349578701109}
-  m_PrefabAsset: {fileID: 0}
---- !u!137 &2906643898302730724 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 1555537661438298321, guid: cecca1aaec347dd4f8ad7d9ef30ea934,
     type: 3}
   m_PrefabInstance: {fileID: 4449583349578701109}
   m_PrefabAsset: {fileID: 0}

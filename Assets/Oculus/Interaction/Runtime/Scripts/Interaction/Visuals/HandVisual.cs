@@ -36,7 +36,7 @@ namespace Oculus.Interaction
         private SkinnedMeshRenderer _skinnedMeshRenderer;
 
         [SerializeField]
-        private bool _updateRootPose = true;
+        public bool _updateRootPose = true;
 
         [SerializeField]
         private bool _updateRootScale = true;
