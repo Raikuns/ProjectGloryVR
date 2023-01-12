@@ -47,7 +47,22 @@ public class Manager2 : MonoBehaviour
 
         points = Mathf.FloorToInt(currentPoints);
 
-        if(currentPoints >= pointGoal)
+        if (points >= pointGoal / 4)
+        {
+            dildoHandler.SetPointsDecreaseMultiplier(1.5f);
+        }
+
+        if (points >= pointGoal / 2)
+        {
+            dildoHandler.SetPointsDecreaseMultiplier(2);
+        }
+
+        if (points >= pointGoal - (pointGoal / 4))
+        {
+            dildoHandler.SetPointsDecreaseMultiplier(5);
+        }
+
+        if (currentPoints >= pointGoal)
         {
             //Reached point goal
             LevelManager.instance.LevelCompleted(Level.Dixie);

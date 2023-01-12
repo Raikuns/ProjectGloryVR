@@ -5,7 +5,11 @@ public class Dildo : MonoBehaviour
 {
     RopeGrabber dick;
 
+    public Dimension dimension = Dimension.z;
+
     [SerializeField] public GameObject moveableDick;
+
+    public float availablePointDecreaseMultiplier;
 
     TailAnimator2 tailAnim;
     Transform startedOnBone;
@@ -48,7 +52,7 @@ public class Dildo : MonoBehaviour
     {
         if (decreasePoints)
         {
-            availablePoints -= Time.deltaTime;
+            availablePoints -= Time.deltaTime * availablePointDecreaseMultiplier;
             if (availablePoints < 1)
             {
                 BackToOrigin();
@@ -60,7 +64,16 @@ public class Dildo : MonoBehaviour
 
     void MoveDickAccordingly()
     {
-        Vector3 desiredPos = new(penisLook.position.x, penisLook.position.y, dick.transform.position.z + 0.18f);
+        Vector3 desiredPos = penisLook.position;
+
+        if (dimension == Dimension.z)
+        {
+            desiredPos = new(penisLook.position.x, penisLook.position.y, dick.transform.position.z + 0.18f);
+        }
+        else if (dimension == Dimension.x)
+        {
+            desiredPos = new(penisLook.position.x, penisLook.position.y, dick.transform.position.z);
+        }
 
         penisLook.position = desiredPos;
     }
