@@ -18,6 +18,8 @@ public class DildoHandler : MonoBehaviour
         {
             dildos.Add(dildosArray[i]);
         }
+
+        SetPointsDecreaseMultiplier(1f);
     }
 
     private void Update()
@@ -36,7 +38,7 @@ public class DildoHandler : MonoBehaviour
         }
         else
         {
-            StartCoroutine(GetNewDildoWithDelay(Random.Range(manager.maxDelay, manager.maxDelay)));
+            StartCoroutine(GetNewDildoWithDelay(Random.Range(manager.minDelay, manager.maxDelay)));
         }
     }
 
@@ -51,7 +53,23 @@ public class DildoHandler : MonoBehaviour
     {
         Dildo newDildo = GetRandomDildo();
         newDildo.moveableDick.SetActive(true);
-        LeanTween.move(newDildo.moveableDick, new Vector3(newDildo.moveableDick.transform.position.x, newDildo.moveableDick.transform.position.y, desiredPos.position.z), 0.2f);
+
+        Vector3 pos = new Vector3();
+
+        if (newDildo.dimension == Dimension.z)
+        {
+            pos = new Vector3(newDildo.moveableDick.transform.position.x, newDildo.moveableDick.transform.position.y, desiredPos.position.z);
+        }
+        else if (newDildo.dimension == Dimension.x)
+        {
+            pos = new Vector3(desiredPos.position.x, newDildo.moveableDick.transform.position.y, newDildo.moveableDick.transform.position.z);
+        }
+        else if (newDildo.dimension == Dimension._x_)
+        {
+            pos = new Vector3(-desiredPos.position.x, newDildo.moveableDick.transform.position.y, newDildo.moveableDick.transform.position.z);
+        }
+
+        LeanTween.move(newDildo.moveableDick, pos, 0.2f);
 
         newDildo.IsChosenDildo(this);
 
@@ -72,4 +90,19 @@ public class DildoHandler : MonoBehaviour
     {
         manager.AddToPoints(points);
     }
+
+    public void SetPointsDecreaseMultiplier(float multiplier)
+    {
+        for (int i = 0; i < dildos.Count; i++)
+        {
+            dildos[i].availablePointDecreaseMultiplier = multiplier;
+        }
+    }
+}
+
+public enum Dimension
+{
+    x,
+    z,
+    _x_
 }

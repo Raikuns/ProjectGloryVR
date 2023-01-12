@@ -23,6 +23,8 @@ public class PauseManager : MonoBehaviour
 
     bool inMenu = false;
 
+    [SerializeField] LevelData[] levelData;
+
     LevelManager levelManager;
 
     private void Start()
@@ -36,7 +38,7 @@ public class PauseManager : MonoBehaviour
 
         mainCam = Camera.main.transform;
 
-        if(LevelManager.instance != null)
+        if (LevelManager.instance != null)
         {
             levelManager = LevelManager.instance;
             levelManager.pauseManager = this;
@@ -49,6 +51,8 @@ public class PauseManager : MonoBehaviour
             LevelManager manager = managerObj.AddComponent<LevelManager>();
             levelManager = manager;
             levelManager.pauseManager = this;
+
+            levelManager.levels = levelData;
         }
     }
 
@@ -122,7 +126,7 @@ public class PauseManager : MonoBehaviour
     {
         headerParent.Appear(headers, 1);
 
-        headerParent.gameObject.transform.position = new Vector3(button.transform.position.x, button.transform.position.y + .15f, button.transform.position.z);
+        headerParent.gameObject.transform.position = new Vector3(button.transform.position.x, button.transform.position.y + .3f, button.transform.position.z);
         headerParent.gameObject.transform.LookAt(mainCam);
 
         inMenu = true;
