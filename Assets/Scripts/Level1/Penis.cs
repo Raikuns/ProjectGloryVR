@@ -11,9 +11,13 @@ public class Penis : MonoBehaviour
     public TailAnimator2 tailAnim;
     public PlessureMeter meter;
 
+    [SerializeField] ParticleSystem cumParticle;
+    [SerializeField] Transform dickEnd;
+
     public UnityEvent onCum;
 
     public bool mirrored = false;
+    bool cum = false;
 
     private void Awake()
     {
@@ -28,12 +32,35 @@ public class Penis : MonoBehaviour
         speedTracker.gameObject.SetActive(false);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+
+        }
+
+        if (!cum)
+            return;
+
+        cumParticle.transform.position = dickEnd.position;  
+        cumParticle.transform.rotation = dickEnd.rotation;
+    }
+
     public void TurnOn()
     {
         //LeanTween.value(gameObject, 0, 0.1f, 1).setOnUpdate(UpdateWaveSpeed);
         //LeanTween.value(0, 0.4f, 1).setOnUpdate(UpdateWaveRange);
 
         speedTracker.gameObject.SetActive(true);
+    }
+
+    public void Cum()
+    {
+        cumParticle.Play();
+        cum = true;
+
+        UpdateWaveRange(1);
+        UpdateWaveRange(7);
     }
 
     void UpdateWaveSpeed(float value)

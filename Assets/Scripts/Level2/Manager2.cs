@@ -49,12 +49,12 @@ public class Manager2 : MonoBehaviour
 
         if (points >= pointGoal / 4)
         {
-            dildoHandler.SetPointsDecreaseMultiplier(1.5f);
+            dildoHandler.SetPointsDecreaseMultiplier(1.8f);
         }
 
         if (points >= pointGoal / 2)
         {
-            dildoHandler.SetPointsDecreaseMultiplier(2);
+            dildoHandler.SetPointsDecreaseMultiplier(3);
         }
 
         if (points >= pointGoal - (pointGoal / 4))

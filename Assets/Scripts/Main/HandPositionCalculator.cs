@@ -62,45 +62,45 @@ public class HandPositionCalculator : MonoBehaviour
 
         Vector3 handDir = dir + offset;
 
-        grabbable.rotation = Quaternion.LookRotation(handDir);
+        grabbable.rotation = Quaternion.LookRotation(-handDir);
     }
 
-    void SetMinAndMaxPoints()
-    {
-        float maxX = bones[0].transform.position.x;
-        float minX = bones[bones.Length - 1].transform.position.x;
+    //void SetMinAndMaxPoints()
+    //{
+    //    float maxX = bones[0].transform.position.x;
+    //    float minX = bones[bones.Length - 1].transform.position.x;
 
-        if (!penis.mirrored)
-        {
-            if (grabbable.transform.position.x > maxX)
-            {
-                SetPosition(maxX);
-            }
-            else if (grabbable.transform.position.x < minX)
-            {
-                SetPosition(minX);
-            }
-            else
-            {
-                SetPosition(grabbable.position.x);
-            }
-        }
-        else
-        {
-            if (grabbable.transform.position.x < maxX)
-            {
-                SetPosition(maxX);
-            }
-            else if (grabbable.transform.position.x > minX)
-            {
-                SetPosition(minX);
-            }
-            else
-            {
-                SetPosition(grabbable.position.x);
-            }
-        }
-    }
+    //    if (!penis.mirrored)
+    //    {
+    //        if (grabbable.transform.position.x > maxX)
+    //        {
+    //            SetPosition(maxX);
+    //        }
+    //        else if (grabbable.transform.position.x < minX)
+    //        {
+    //            SetPosition(minX);
+    //        }
+    //        else
+    //        {
+    //            SetPosition(grabbable.position.x);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        if (grabbable.transform.position.x < maxX)
+    //        {
+    //            SetPosition(maxX);
+    //        }
+    //        else if (grabbable.transform.position.x > minX)
+    //        {
+    //            SetPosition(minX);
+    //        }
+    //        else
+    //        {
+    //            SetPosition(grabbable.position.x);
+    //        }
+    //    }
+    //}
 
     void SetPosition(float x)
     {
