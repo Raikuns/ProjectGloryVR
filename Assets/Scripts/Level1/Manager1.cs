@@ -1,4 +1,5 @@
 using FIMSpace.FTail;
+using Oculus.Interaction.HandGrab;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class Manager1 : MonoBehaviour
     [Header("Start sequence")]
     public FMODAudioSource zipperAudio;
     public FMODAudioSource pantsDropAudio;
+
+    [SerializeField] HandGrabInteractor[] grabbers;
 
     [Header("Dicks")]
     [SerializeField] Penis firstDick;
@@ -51,6 +54,8 @@ public class Manager1 : MonoBehaviour
 
     public void DickEjaculated(int dick)
     {
+        DisableGrabbers();
+
         if (dick == 0)
         {
             TurnOnSecondDick();
@@ -64,6 +69,8 @@ public class Manager1 : MonoBehaviour
             //LEVEL COMPLETED
             levelManager.LevelCompleted(Level.WhacADick); 
         }
+
+        EnableGrabbers();
     }
 
     void TurnOnFirstDickInteraction()
@@ -91,5 +98,21 @@ public class Manager1 : MonoBehaviour
     {
         thirdDick.gameObject.SetActive(true);
         LeanTween.move(thirdDick.gameObject, thirdDickPos.position, moveTime).setEase(moveCurve).setOnComplete(TurnOnThirdDickInteraction);
+    }
+
+    void DisableGrabbers()
+    {
+        for (int i = 0; i < grabbers.Length; i++)
+        {
+            grabbers[i].Disable();
+        }
+    }
+
+    void EnableGrabbers()
+    {
+        for (int i = 0; i < grabbers.Length; i++)
+        {
+            grabbers[i].Disable();
+        }
     }
 }
