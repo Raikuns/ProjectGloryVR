@@ -54,8 +54,6 @@ public class HandPositionCalculator : MonoBehaviour
     {
         Vector3 dir = (baseBone.position - grabbable.position).normalized;
 
-        print(dir);
-
         baseBone.rotation = Quaternion.LookRotation(-dir);
         Debug.DrawRay(baseBone.position, -dir, Color.green, 1);
         Debug.DrawRay(baseBone.position, baseBone.eulerAngles, Color.red, 2);

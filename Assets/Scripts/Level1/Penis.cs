@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Experimental.AI;
 
 public class Penis : MonoBehaviour
 {
@@ -13,8 +14,11 @@ public class Penis : MonoBehaviour
 
     [SerializeField] ParticleSystem cumParticle;
     [SerializeField] Transform dickEnd;
+    [SerializeField] LeanTweenType moveBackType;
 
     public UnityEvent onCum;
+
+    Vector3 startPos;
 
     public bool mirrored = false;
     bool cum = false;
@@ -32,18 +36,26 @@ public class Penis : MonoBehaviour
         speedTracker.gameObject.SetActive(false);
     }
 
-    private void Update()
+    private void Start()
+    {
+        startPos = transform.position;  
+    }
+
+    private void LateUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-
+            onCum.Invoke();
         }
 
         if (!cum)
             return;
 
-        cumParticle.transform.position = dickEnd.position;  
-        cumParticle.transform.rotation = dickEnd.rotation;
+        var localRot = dickEnd.up;
+
+
+        cumParticle.transform.position = dickEnd.position;
+        cumParticle.transform.rotation = Quaternion.LookRotation(localRot);
     }
 
     public void TurnOn()
@@ -59,8 +71,18 @@ public class Penis : MonoBehaviour
         cumParticle.Play();
         cum = true;
 
-        UpdateWaveRange(1);
-        UpdateWaveRange(7);
+        LeanTween.value(gameObject, 1, 2, 0.5f).setOnUpdate(UpdateWaveSpeed);
+        LeanTween.value(gameObject, 0.1f, 1, 0.5f).setOnUpdate(UpdateWaveRange);
+
+        LeanTween.delayedCall(cumParticle.main.duration, ResetWave);
+    }
+
+    void ResetWave()
+    {
+        LeanTween.value(gameObject, 2, 1, 0.5f).setOnUpdate(UpdateWaveSpeed);
+        LeanTween.value(gameObject, 1, 0.1f, 0.5f).setOnUpdate(UpdateWaveRange);
+
+        LeanTween.move(gameObject, startPos, 1f).setEase(moveBackType);
     }
 
     void UpdateWaveSpeed(float value)

@@ -2188,6 +2188,9 @@ MonoBehaviour:
   speedTracker: {fileID: 0}
   tailAnim: {fileID: 0}
   meter: {fileID: 0}
+  cumParticle: {fileID: 0}
+  dickEnd: {fileID: 0}
+  moveBackType: 0
   onCum:
     m_PersistentCalls:
       m_Calls:
@@ -3694,7 +3697,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 826597698}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &622376384
 MonoBehaviour:
@@ -5557,11 +5560,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6011595680801939522}
   - {fileID: 543450652941979308}
   - {fileID: 1834168402}
   - {fileID: 622376383}
   - {fileID: 1788512515}
+  - {fileID: 6011595680801939522}
   - {fileID: 5156397015520995945}
   m_Father: {fileID: 1033138621}
   m_RootOrder: 0
@@ -5582,12 +5585,15 @@ MonoBehaviour:
   speedTracker: {fileID: 0}
   tailAnim: {fileID: 0}
   meter: {fileID: 0}
+  cumParticle: {fileID: 6011595680801939520}
+  dickEnd: {fileID: 864255531568429346}
+  moveBackType: 27
   onCum:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6011595680801939520}
-        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: Play
+      - m_Target: {fileID: 826597699}
+        m_TargetAssemblyTypeName: Penis, Assembly-CSharp
+        m_MethodName: Cum
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5604,7 +5610,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5711,6 +5717,9 @@ MonoBehaviour:
   speedTracker: {fileID: 0}
   tailAnim: {fileID: 0}
   meter: {fileID: 0}
+  cumParticle: {fileID: 0}
+  dickEnd: {fileID: 0}
+  moveBackType: 0
   onCum:
     m_PersistentCalls:
       m_Calls:
@@ -13149,7 +13158,7 @@ Transform:
   m_Children:
   - {fileID: 289848741}
   m_Father: {fileID: 826597698}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1788512516
 MonoBehaviour:
@@ -13295,7 +13304,7 @@ Transform:
   m_Children:
   - {fileID: 6035498533647542860}
   m_Father: {fileID: 826597698}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1846090701 stripped
 GameObject:
@@ -15494,7 +15503,7 @@ Transform:
   - {fileID: 1210245178030945092}
   - {fileID: 831705380123648247}
   m_Father: {fileID: 826597698}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &581002563618959611
 Transform:
@@ -16567,7 +16576,7 @@ MonoBehaviour:
   UpdateAsLast: 1
   DetectZeroKeyframes: 1
   StartAfterTPose: 1
-  OptimizeWithMesh: {fileID: 0}
+  OptimizeWithMesh: {fileID: 9103114587922989536}
   TailAnimatorAmount: 1
   DetachChildren: 0
   Axis2D: 0
@@ -27117,7 +27126,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -32089,14 +32098,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6011595680801939523}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.45399994, y: 0.086000025, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6011595681539749745}
   m_Father: {fileID: 826597698}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6011595680801939523
 GameObject:
